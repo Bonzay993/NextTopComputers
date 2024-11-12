@@ -1,6 +1,12 @@
 /* Additional custom styles */
+/* Additional custom styles */
 .navbar-brand {
     font-weight: bold;
+  }
+  .category-links {
+    display: flex;
+    gap: 15px;
+    padding: 10px 0;
   }
   .hero-section {
     background: url('https://via.placeholder.com/1500x500') no-repeat center center;
