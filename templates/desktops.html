@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+</head>
+<body>
+    {% for desktop in desktops %}
+        {{ desktop.name}}<br>
+        {{ desktop.price}}<br>
+        {{ desktop.description}}<br>
+        <a>Tag:</a>{{ desktop.category_name}}<br>
+    {% endfor %}
+</body>
+</html>
