@@ -20,7 +20,9 @@ conn = mongo_connect(MONGO_URI)
 
 coll = conn[DATABASE][COLLECTION]
 
-documents = coll.find()
+documents = coll.find({"Name":"Apple"})
 
 for doc in documents:
     print(doc)
+
+
