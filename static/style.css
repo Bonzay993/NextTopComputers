@@ -1,0 +1,21 @@
+/* Additional custom styles */
+.navbar-brand {
+    font-weight: bold;
+  }
+  .hero-section {
+    background: url('https://via.placeholder.com/1500x500') no-repeat center center;
+    background-size: cover;
+    height: 500px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-section h1 {
+    font-size: 3rem;
+  }
+  .product-card img {
+    height: 200px;
+    object-fit: cover;
+  }
