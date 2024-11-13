@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 def get_base():
     return render_template("base.html")
 
-@app.route("/sign-in")
+@app.route("/sign_in")
 def sign_in():
     return render_template("sign-in.html")
 
@@ -52,9 +52,9 @@ def register():
         return redirect(url_for("sign_in"))
     return render_template("register.html")
 
-@app.route("/registration-success")
-def registration_success():
-    return render_template("registration-success.html")
+@app.route("/forgot_password")
+def forgot_password():
+    return render_template("forgot-password.html")
 
 @app.route("/get_desktops")
 def get_desktops():

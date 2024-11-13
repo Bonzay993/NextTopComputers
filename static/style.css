@@ -196,16 +196,17 @@ body{
     gap:10px;
 }
 
-.flashes-error{
-    color:red;
-    font-size: 100%;
+/* Reset Password Form Style */
+.reset-password-form{
+    display:flex;
+    flex-flow:column wrap;
+    max-width:20%;
+    margin: 0 auto;
+    height:80%;
+    margin-top:5%;
+    gap:2%;
 }
-
-.flashes-success{
-    color:green;
-    font-size: 100%;
-    text-decoration:none;
-}
+    
 
 /* Responsive styles */
 @media (max-width: 992px) {
