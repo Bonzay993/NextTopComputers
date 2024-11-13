@@ -14,7 +14,7 @@
     <div class="container d-flex align-items-center justify-content-between">
       
       <!-- Brand Name -->
-      <a class="navbar-brand" href="#">NextTopComputers</a>
+      <a class="navbar-brand" href="{{ url_for('get_base') }}">NextTopComputers</a>
 
       <!-- Toggle Button for Mobile -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,18 +25,19 @@
       <div class="collapse navbar-collapse d-lg-flex align-items-center justify-content-between" id="navbarNav">
 
       <!-- Centered Search Bar -->
-      <form class="d-flex mx-3" style="flex-grow: 1; max-width: 500px;">
+      <form class="d-flex mx-auto" style="flex-grow: 1; max-width: 500px;">
         <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search">
         <button class="btn btn-outline-primary" type="submit">Search</button>
       </form>
 
       <!-- Right-Side Links -->
       <div class="navbar-nav">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="{{ url_for('get_base') }}">Home</a>
         <a class="nav-link" href="#">Shop</a>
         <a class="nav-link" href="#">About</a>
         <a class="nav-link" href="#">Contact</a>
         <a class="nav-link" href="#"><i class="bi bi-cart"></i> Cart</a>
+        <a class="nav-link" href="#">Sign In</a>
       </div>
       
     </div>
@@ -44,8 +45,8 @@
 
   <!-- Categories Section Under ShopName, Left-Aligned -->
   <div class="bg-light category-container">
-    <div class="container category-links">
-      <a class="nav-link" href="#">Computers</a>
+    <div class="container  category-links">
+      <a class="nav-link" href="{{ url_for('get_desktops') }}">Desktops</a>
       <a class="nav-link" href="#">Gaming Computers</a>
       <a class="nav-link" href="#">Laptops</a>
       <a class="nav-link" href="#">Graphics Cards</a>
@@ -53,7 +54,7 @@
       <a class="nav-link" href="#">Cases</a>
     </div>
   </div>
-
+  {% block content %}
     <!-- Hero Section -->
   <section class="hero-section">
     <div class="container">
@@ -62,7 +63,7 @@
       <a href="#products" class="btn btn-primary btn-lg mt-3">Shop Now</a>
     </div>
   </section>
-  {% block content %}
+  
   <!-- Product Section -->
   <section id="products" class="py-5">
     <div class="container">

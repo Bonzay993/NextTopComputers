@@ -13,6 +13,25 @@
     font-size: 80%;
 }
 
+.view-product-btn, .add-to-cart-btn{
+    padding:5px;
+    background-color:blueviolet;
+    border-radius: 10px;
+    color:white;
+    width:80%;
+    text-align: center;
+    text-decoration: none;
+
+}
+
+.product-btn-container{
+    display:flex;
+    height:40%;
+    width:100%;
+    justify-content: space-between;
+    
+}
+
 .category-container {
     height: auto;
     padding: 0.5rem 0;
