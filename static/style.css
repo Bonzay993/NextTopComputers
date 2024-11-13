@@ -1,0 +1,64 @@
+/* Additional custom styles */
+.navbar {
+    height: auto;
+    padding: 1rem 0;
+}
+.navbar-brand {
+    font-weight: bold;
+}
+.category-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 80%;
+}
+
+.category-container {
+    height: auto;
+    padding: 0.5rem 0;
+}
+
+.hero-section {
+    background: url('https://via.placeholder.com/1500x500') no-repeat center center;
+    background-size: cover;
+    height: 400px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+}
+
+.product-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .category-links {
+        justify-content: center;
+    }
+
+    .product-card img {
+        height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 300px;
+    }
+
+    .navbar .form-control {
+        flex-grow: 1;
+    }
+}
