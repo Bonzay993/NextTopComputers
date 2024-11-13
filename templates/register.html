@@ -1,7 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 
+
+
+
 <form method="POST" action="{{ url_for('register') }}" class="register-form" id="registerForm">
+    <!--Show flash messages-->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == 'success' %}
+                    <div class="row flashes-success">
+                        <h4>{{ message|safe }}</h4>
+                    </div>
+                {% elif category == 'error' %}
+                    <div class="row flashes-error">
+                        <h4>{{ message|safe }}</h4>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <h3>Create an account</h3>
     <div class="form-group">
       <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
@@ -23,6 +42,9 @@
     </div>
     <div id="passwordError" style="color: red; display: none;">Passwords do not match!</div>
     <button type="submit" class="btn btn-primary sign-in-btn register-buttons">Create Account</button>
+    <div class ="forgot-password-container" >
+        <a href=""class = "forgot-password">Forgot your password?</a>
+    </div>
 </form>
 
 {% endblock %}

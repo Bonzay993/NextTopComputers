@@ -33,7 +33,7 @@ def register():
             {"email": request.form.get("email").lower()})
         
         if existing_user:
-            flash("Email already exists")
+            flash("Email already exists. Please choose a different email or click on Forgot Password", 'error')
             return redirect(url_for("register"))
 
         register = {
@@ -48,8 +48,12 @@ def register():
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("email").lower()
-        flash("Registration Succesful")   
+        flash('Registration Successful. Please click <a href="{{ url_for("sign-in") }}">here</a> to Sign In', 'success')
     return render_template("register.html")
+
+@app.route("/registration-success")
+def registration_success():
+    return render_template("registration-success.html")
 
 @app.route("/get_desktops")
 def get_desktops():
