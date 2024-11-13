@@ -48,7 +48,8 @@ def register():
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("email").lower()
-        flash('Registration Successful. Please click <a href="{{ url_for("sign-in") }}">here</a> to Sign In', 'success')
+        flash('Registration Successful. Please sign in below', 'success')
+        return redirect(url_for("sign_in"))
     return render_template("register.html")
 
 @app.route("/registration-success")
