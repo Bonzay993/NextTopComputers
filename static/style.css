@@ -1,20 +1,44 @@
 /* Additional custom styles */
+
 body{
     height:100vh;
+    
 }
 
 .navbar {
-    height: auto;
-    padding: 1rem 0;
+    height: 70px; 
+    padding: 0;
 }
+
+.category-container {
+    height: 70px; 
+    display: flex;
+    align-items: center; 
+    padding: 0.5%;
+}
+
+/* Center the brand in the navbar */
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .navbar-brand {
     font-weight: bold;
+    font-size: 150%;
+    display: flex;
+    align-items: center;
 }
+
+/* Adjust spacing for the category links */
 .category-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 1rem;
     font-size: 80%;
+    padding-top:0.5%;
+    padding-bottom:1%;
 }
 
 .dropdown-products{
