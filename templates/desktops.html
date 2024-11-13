@@ -2,8 +2,7 @@
 {% block content %}
 
 <section id="products" class="py-5">
-    <div class="container">
-        <h2 class="text-center mb-4">Desktops</h2>
+    <div class="container py-5">
         <div class="row">
             <!-- Filter Column on the Left -->
             <div class="col-md-4 order-md-1 mb-4">
@@ -12,9 +11,9 @@
             </div>
 
             <!-- Product Cards Column on the Right -->
-            <div class="col-md-8 order-md-2">
+            <div class="col-md-8 order-md-2 product-card-container">
                 {% for desktop in desktops %}
-                <div class="card product-card mb-4">
+                <div class="card product-card mb-5">
                     <div class="row g-0">
                         <!-- Image Column on the Left -->
                         <div class="col-md-4 px-2 py-2">
@@ -32,10 +31,10 @@
                         </div>
                         <!-- Price and Add to Cart Button on the Right -->
                         <div class="col-md-2 d-flex flex-column align-items-center pt-3">
-                            <h3 class="card-text"><span>£</span>{{ desktop.price }}</h3>
+                            <h3 class="card-text product-price"><span>£</span>{{ desktop.price }}</h3>
                             <div class="flex-column product-btn-container">
-                                <a href="#" class="view-product-btn">View Product</a>
-                                <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                                <a href="#" class="view-product-btn product-btn">View Product</a>
+                                <a href="#" class="add-to-cart-btn product-btn">Add to Cart</a>
                             </div>
                             
                         </div>
