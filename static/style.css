@@ -1,5 +1,6 @@
 /* Additional custom styles */
 
+
 .navbar {
     height: auto;
     padding: 1rem 0;
@@ -12,6 +13,38 @@
     flex-wrap: wrap;
     gap: 15px;
     font-size: 80%;
+}
+
+.dropdown-products{
+    padding-bottom:1%;
+    
+}
+
+.selected{
+    background-color: rgb(232, 219, 244);
+}
+
+.dropdown-toggle {
+    padding: 1%;
+    font-size: 95%;
+    border:1px solid blueviolet;
+    background-color:white;
+    color:rgb(68, 66, 66);
+}
+
+/* removing boostrap effects */
+.dropdown-toggle:hover,
+.dropdown-toggle:focus,
+.dropdown-toggle:active,
+.dropdown-toggle.show {
+    background-color: white !important;
+    color: rgb(68, 66, 66) !important;
+    border: 1px solid blueviolet;
+    box-shadow: none !important;
+}
+
+.dropdown-item{
+    font-size: 95%;
 }
 
 .product-price{
@@ -70,20 +103,30 @@
     font-size: 2.5rem;
 }
 
+/* Remove fixed height on product cards */
 .product-card {
-    height:55%;
     align-content: center;
     text-align: center;
-    display:flex;
+    display: flex;
     justify-content: center;
+    padding: 6%; /* Adds inside padding to give the card more structure */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional for card shadow */
 }
 
-.product-card-container{
-    padding-bottom:10%;
+/* Adjust button container for relative positioning */
+.product-btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px; /* Adds some spacing */
+    width: 20%; /* Matches button width to container */
+    align-items: center;
 }
 
+/* Optional: limit max-height on images */
 .product-card img {
-    height: 200px;
+    max-height: 200px;
+    width: 100%; /* Full width for consistent sizing */
     object-fit: cover;
 }
 
