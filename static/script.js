@@ -20,9 +20,11 @@ window.onload = function() {
     form.addEventListener("submit", function(event) {
       if (passwordField.value !== repeatPasswordField.value) {
         event.preventDefault();
-        alert("Passwords do not match! Please check your entries.");
+        passwordError.style.display = "block";  // Show error message
         repeatPasswordField.focus();
-      }
+      }  else {
+        passwordError.style.display = "none";  // Hide error message if passwords match
+    }
     });
   });
 
