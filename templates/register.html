@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form class="register-form" id="registerForm">
+<form method="POST" action="{{ url_for('register') }}" class="register-form" id="registerForm">
     <h3>Create an account</h3>
     <div class="form-group">
-      <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+      <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+      <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
     </div>
     <div class="form-group">
-        <input type="email" class="form-control" id="email" placeholder="Email Address" required>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
     </div>
     <div class="form-group">
-        <input type="tel" class="form-control" id="phoneNumber" placeholder="Phone Number (optional)">
+        <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number (optional)">
     </div>
     <div class="form-group">
-        <input type="password" class="form-control" id="password" placeholder="Password" required>
+        <input type="password" class="form-control" id="password" name="password"placeholder="Password" required>
     </div>
     <div class="form-group">
         <input type="password" class="form-control" id="repeatPassword" placeholder="Repeat Password" required>

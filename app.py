@@ -25,11 +25,11 @@ def get_base():
 def sign_in():
     return render_template("sign-in.html")
 
-@app.route("/register")
+@app.route("/register", methods=["GET","POST"])
 def register():
     if request.method == "POST":
         #check if username already exists in db
-        existing_user = mongo.db.users.find.one(
+        existing_user = mongo.db.users.find_one(
             {"email": request.form.get("email").lower()})
         
         if existing_user:
@@ -37,16 +37,17 @@ def register():
             return redirect(url_for("register"))
 
         register = {
-            "first-name": request.form.get("first-name").lower(),
-            "last-name": request.form.get("last-name").lower(),
+            "first_name": request.form.get("first_name").lower(),
+            "last_name": request.form.get("last_name").lower(),
             "email": request.form.get("email").lower(),
+            "phone_number":request.form.get("phone_number"),
             "password": generate_password_hash(request.form.get("password")),
         }
 
         mongo.db.users.insert_one(register)
 
         # put the new user into 'session' cookie
-        session["user"] = request.form.get("username").lower()
+        session["user"] = request.form.get("email").lower()
         flash("Registration Succesful")   
     return render_template("register.html")
 
