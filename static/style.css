@@ -1,5 +1,7 @@
 /* Additional custom styles */
-
+body{
+    height:100vh;
+}
 
 .navbar {
     height: auto;
@@ -128,6 +130,70 @@
     max-height: 200px;
     width: 100%; /* Full width for consistent sizing */
     object-fit: cover;
+}
+
+/*Registration Form */
+
+.sign-in-form{
+    display:flex;
+    flex-flow:column wrap;
+    max-width:20%;
+    margin: 0 auto;
+    height:80%;
+    margin-top:5%;
+    gap:2%;
+    
+}
+
+.register-form{
+    display:flex;
+    flex-flow:column wrap;
+    max-width:20%;
+    margin: 0 auto;
+    height:80%;
+    margin-top:5%;
+    gap:2%;
+}
+
+.register-buttons{
+    width:100%;
+    border-radius: 20px;
+    padding:3%;
+}
+
+.repeat-password{
+    margin-bottom: 10%;
+}
+
+.sign-in-btn {
+    background-color: blueviolet;
+    border-style:2px solid blueviolet;
+}
+
+.sign-in-btn:hover, 
+.sign-in-btn:focus,
+.sign-in-btn:active,
+.sign-in-btn.show{
+    background-color: rgb(160, 80, 235) !important;
+    border-style:2px solid blueviolet !important
+}
+
+.create-account-btn{
+    color:blueviolet;
+    background-color: white;
+    border-style:2px solid blueviolet;
+}
+
+.create-account-btn:hover{
+    background-color: rgb(160, 80, 235) !important;
+}
+
+
+.not-registered-container{
+    margin-top:10%;
+    display:flex;
+    flex-flow:row wrap;
+    gap:10px;
 }
 
 /* Responsive styles */
