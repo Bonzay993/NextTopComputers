@@ -2,6 +2,9 @@
 
 const DROP_DOWN_BTN = document.getElementById("dropdownMenuLink");
 const DROP_DOWN_ITEMS = document.querySelectorAll(".dropdown-item");
+const form = document.getElementById("registerForm");
+const passwordField = document.getElementById("password");
+const repeatPasswordField = document.getElementById("repeatPassword");
 
 window.onload = function() {
     const defaultItem = document.querySelector('.dropdown-item');
@@ -9,6 +12,20 @@ window.onload = function() {
         defaultItem.classList.add('selected');
     }
 };
+
+
+// This checks for Passwords to match in the registration form
+  document.addEventListener("DOMContentLoaded", function() {
+    
+    form.addEventListener("submit", function(event) {
+      if (passwordField.value !== repeatPasswordField.value) {
+        event.preventDefault();
+        alert("Passwords do not match! Please check your entries.");
+        repeatPasswordField.focus();
+      }
+    });
+  });
+
 
 //script for the filter button
 DROP_DOWN_ITEMS.forEach(item => {
