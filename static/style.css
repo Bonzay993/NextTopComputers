@@ -229,6 +229,13 @@ body{
     margin-top:5%;
     gap:2%;
 }
+
+.already-member{
+    margin-top:10%;
+    display:flex;
+    flex-flow:row wrap;
+    gap:10px;
+}
     
 
 /* Responsive styles */

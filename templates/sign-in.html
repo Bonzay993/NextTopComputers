@@ -2,7 +2,7 @@
 {% block content %}
 
 
-<form class="sign-in-form">
+<form method="POST" action="{{ url_for('sign_in')}}" class="sign-in-form">
   {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
       {% for category, message in messages %}
@@ -20,11 +20,11 @@
 {% endwith %}
     <h3>Sign in</h3>
     <div class="form-group">
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <input type="email" id="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <input type="password" id="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
     </div>
     <div class ="forgot-password-container" >
         <a href="{{ url_for('forgot_password') }}" class = "forgot-password">Forgot your password?</a>

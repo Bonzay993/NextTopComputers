@@ -45,6 +45,10 @@
     <div class ="forgot-password-container" >
         <a href="{{ url_for('forgot_password') }}" class = "forgot-password">Forgot your password?</a>
     </div>
+    <div class="already-member">
+        <h3>Already a member?</h3>
+        <a href="{{ url_for('sign_in') }}" class="btn btn-primary create-account-btn register-buttons">Sign In</a>
+    </div>
 </form>
 
 {% endblock %}

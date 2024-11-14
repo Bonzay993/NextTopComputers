@@ -21,9 +21,32 @@ mongo = PyMongo(app)
 def get_base():
     return render_template("base.html")
 
-@app.route("/sign_in")
+
+@app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():
+    if request.method == "POST":
+        #check if username already exists in db
+        existing_user = existing_user = mongo.db.users.find_one(
+            {"email": request.form.get("email").lower()})
+
+        if existing_user:
+            #ensure hashed password matches user input
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("email").lower()
+                    flash("Welcome, {}".format(request.form.get("email")),'success')
+            else:
+                #invalid password
+                flash("Incorrect Email and/or Password",'error')
+                return redirect(url_for("sign_in"))
+    
+        else:
+            #username doesn't exist
+            flash("Incorrect Email and/or Password", 'error')
+            return redirect(url_for("sign_in"))
+
     return render_template("sign-in.html")
+
 
 @app.route("/register", methods=["GET","POST"])
 def register():
@@ -51,6 +74,7 @@ def register():
         flash('Registration Successful. Please sign in below', 'success')
         return redirect(url_for("sign_in"))
     return render_template("register.html")
+
 
 @app.route("/forgot_password")
 def forgot_password():
