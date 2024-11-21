@@ -236,6 +236,28 @@ body{
     flex-flow:row wrap;
     gap:10px;
 }
+
+.forgot-password-container{
+    text-align: left;
+}
+
+.forgot-password{
+    text-decoration: none;
+}
+
+.validation-message{
+    color: red; 
+    display: none;
+}
+
+.validation-message-password{
+    color:red;
+}
+
+.password-error{
+    color: red;
+    display: none;
+}
     
 
 /* Responsive styles */
