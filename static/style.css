@@ -252,14 +252,19 @@ body{
     padding-left:2.5%;
 }
 
-.validation-message-password{
-    color:red;
-}
 
-.password-rules-list{
-    list-style: none; 
+.password-rules-list {
+    list-style: none; /* Remove bullet points */
     padding: 0; 
     margin: 0;
+    font-size: 90%; /* Adjust text size */
+}
+
+.password-rules-list li {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Add spacing between icon and text */
+    margin-bottom: 5px; /* Add some space between items */
 }
     
 
