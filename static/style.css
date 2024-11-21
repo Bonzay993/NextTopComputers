@@ -266,6 +266,14 @@ body{
     gap: 5px; /* Add spacing between icon and text */
     margin-bottom: 5px; /* Add some space between items */
 }
+
+.password-validator{
+    color:red;
+    display: none;
+    font-size: 75%;
+    padding-left:2.5%;
+    margin-top:2%;
+}
     
 
 /* Responsive styles */
