@@ -201,6 +201,11 @@ body{
     border-style:2px solid blueviolet !important
 }
 
+.text-under-email-field{
+   font-size: 80%;
+   margin-left:4px;
+}
+
 .create-account-btn{
     color:blueviolet;
     background-color: white;
@@ -211,12 +216,15 @@ body{
     background-color: rgb(160, 80, 235) !important;
 }
 
-
 .not-registered-container{
     margin-top:10%;
     display:flex;
     flex-flow:row wrap;
     gap:10px;
+}
+
+.return-to-sign-in{
+    text-decoration: none;
 }
 
 /* Reset Password Form Style */
