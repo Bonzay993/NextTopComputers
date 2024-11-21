@@ -47,3 +47,16 @@ function selectItem(element){
     DROP_DOWN_BTN.textContent = element.textContent;
 }
 
+/** Registration Form Fields Validation */
+
+// Validation messages for First Name, Last Name, and Email
+document.querySelectorAll('#first_name, #last_name, #email, #password').forEach(input => {
+  input.addEventListener('blur', function () {
+      const errorDiv = document.getElementById(input.id + "_error");
+      if (!input.value.trim()) {
+          errorDiv.style.display = "block";
+      } else {
+          errorDiv.style.display = "none";
+      }
+  });
+});

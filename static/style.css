@@ -248,15 +248,18 @@ body{
 .validation-message{
     color: red; 
     display: none;
+    font-size: 75%;
+    padding-left:2.5%;
 }
 
 .validation-message-password{
     color:red;
 }
 
-.password-error{
-    color: red;
-    display: none;
+.password-rules-list{
+    list-style: none; 
+    padding: 0; 
+    margin: 0;
 }
     
 

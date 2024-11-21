@@ -22,34 +22,34 @@
     <h3>Create an account</h3>
     <div class="form-group">
         <input type="text" minlength="1" maxlength="15" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
-        <div class="validation-message" id="firstNameError">Please input</div>
+        <div class="validation-message" id="first_name_error">Complete this field</div>
     </div>
     <div class="form-group">
         <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
-        <div class="validation-message" id="lastNameError">Please input</div>
+        <div class="validation-message" id="last_name_error">Complete this field</div>
     </div>
     <div class="form-group">
         <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
-        <div class="validation-message" id="emailError">Please input</div>
+        <div class="validation-message" id="email_error">Please enter an email address</div>
     </div>
     <div class="form-group">
         <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number (optional)">
     </div>
     <div class="form-group">
         <input type="password" minlength="6" maxlength="15" class="form-control" id="password" name="password" placeholder="Password" required>
-        <div class="validation-message-password" id="passwordRules">
-            <ul style="list-style: none; padding: 0; margin: 0;">
-                <li class="validation-message-password" id="uppercase" >Needs an uppercase letter</li>
-                <li class="validation-message-password" id="lowercase" >Needs a lowercase letter</li>
-                <li class="validation-message-password" id="number" >Needs a number</li>
-                <li class="validation-message-password" id="minLength">Minimum 6 characters</li>
+        <div class="validation-message" id="password_error">
+            Please enter a password
+            <ul class="password-rules-list">
+                <li class="validation-message" id="uppercase" >Needs an uppercase letter</li>
+                <li class="validation-message" id="lowercase" >Needs a lowercase letter</li>
+                <li class="validation-message" id="number" >Needs a number</li>
+                <li class="validation-message" id="minLength">Minimum 6 characters</li>
             </ul>
         </div>
     </div>
     <div class="form-group">
         <input type="password" class="form-control" id="repeatPassword" placeholder="Repeat Password" required>
     </div>
-    <div class="password-error" id="passwordError" >Passwords do not match!</div>
     <button type="submit" class="btn btn-primary sign-in-btn register-buttons">Create Account</button>
     <div class="forgot-password-container">
         <a href="{{ url_for('forgot_password') }}" class="forgot-password">Forgot your password?</a>
@@ -59,3 +59,5 @@
         <a href="{{ url_for('sign_in') }}" class="btn btn-primary create-account-btn register-buttons">Sign In</a>
     </div>
 </form>
+
+{% endblock %}
