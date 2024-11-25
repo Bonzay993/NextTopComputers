@@ -1,5 +1,4 @@
 
-
 const DROP_DOWN_BTN = document.getElementById("dropdownMenuLink");
 const DROP_DOWN_ITEMS = document.querySelectorAll(".dropdown-item");
 const form = document.getElementById("registerForm");
@@ -9,7 +8,7 @@ const registerForm = document.getElementById('registerForm');
 
 
 window.onload = function() {
-    const defaultItem = document.querySelector('.dropdown-item');
+    let defaultItem = document.querySelector('.dropdown-item');
     if (defaultItem) {
         defaultItem.classList.add('selected');
     }
@@ -41,8 +40,8 @@ DROP_DOWN_ITEMS.forEach(item => {
 
 //function so that the items currently selected on the filter gets highlighted
 function selectItem(element){
-    const ITEMS = document.querySelectorAll(".dropdown-item");
-    ITEMS.forEach(item => item.classList.remove('selected'));
+    let items = document.querySelectorAll(".dropdown-item");
+    items.forEach(item => item.classList.remove('selected'));
 
     element.classList.add('selected');
 
@@ -75,25 +74,25 @@ const passwordRules = {
 };
 
 function updatePasswordRules() {
-  const value = passwordInput.value;
+  let value = passwordInput.value;
   
   // Check and update the uppercase rule
-  const uppercaseValid = passwordRules.uppercase.test(value);
+  let uppercaseValid = passwordRules.uppercase.test(value);
   document.getElementById('uppercase').innerHTML = uppercaseValid ? '✅ Needs an uppercase letter' : '❌ Needs an uppercase letter';
   document.getElementById('uppercase').style.color = uppercaseValid ? 'green' : 'red';
   
   // Check and update the lowercase rule
-  const lowercaseValid = passwordRules.lowercase.test(value);
+  let lowercaseValid = passwordRules.lowercase.test(value);
   document.getElementById('lowercase').innerHTML = lowercaseValid ? '✅ Needs a lowercase letter' : '❌ Needs a lowercase letter';
   document.getElementById('lowercase').style.color = lowercaseValid ? 'green' : 'red';
   
   // Check and update the number rule
-  const numberValid = passwordRules.number.test(value);
+  let numberValid = passwordRules.number.test(value);
   document.getElementById('number').innerHTML = numberValid ? '✅ Needs a number' : '❌ Needs a number';
   document.getElementById('number').style.color = numberValid ? 'green' : 'red';
   
   // Check and update the minimum length rule
-  const minLengthValid = passwordRules.minLength.test(value);
+  let minLengthValid = passwordRules.minLength.test(value);
   document.getElementById('minLength').innerHTML = minLengthValid ? '✅ Minimum 8 characters' : '❌ Minimum 8 characters';
   document.getElementById('minLength').style.color = minLengthValid ? 'green' : 'red';
 }
@@ -114,16 +113,13 @@ passwordInput.addEventListener('blur', () => {
 // Update password rules dynamically on input
 passwordInput.addEventListener('input', updatePasswordRules);
 
-
-
 // Function to check if all password rules are satisfied
 function arePasswordRulesSatisfied() {
-    const value = passwordInput.value;
-    
-    const uppercaseValid = passwordRules.uppercase.test(value);
-    const lowercaseValid = passwordRules.lowercase.test(value);
-    const numberValid = passwordRules.number.test(value);
-    const minLengthValid = passwordRules.minLength.test(value);
+    let value = passwordInput.value;
+    let uppercaseValid = passwordRules.uppercase.test(value);
+    let lowercaseValid = passwordRules.lowercase.test(value);
+    let numberValid = passwordRules.number.test(value);
+    let minLengthValid = passwordRules.minLength.test(value);
     
     // Check if all rules are valid
     return uppercaseValid && lowercaseValid && numberValid && minLengthValid;

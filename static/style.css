@@ -1,27 +1,35 @@
-/* Additional custom styles */
+/* Base styles */
 
-body{
-    height:100vh;
-    
-}
-
-.navbar {
-    height: 70px; 
+html, body{
     padding: 0;
+    height:100%;
+    margin:0 
+}   
+
+footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    color:black;
 }
 
-.category-container {
-    height: 70px; 
-    display: flex;
-    align-items: center; 
-    padding: 0.5%;
+main{
+    min-height:75.7%;
 }
 
-/* Center the brand in the navbar */
+/* Navbar */
+.navbar {
+    height: 70px; /* Fixed height for consistency */
+    padding: 0.5rem 1rem;
+    overflow: hidden; /* Prevent content overflow from affecting height */
+}
+
 .navbar .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 100%; /* Ensures consistent alignment */
 }
 
 .navbar-brand {
@@ -31,33 +39,36 @@ body{
     align-items: center;
 }
 
-/* Adjust spacing for the category links */
+/* Category Links */
+.category-container {
+    height: auto; /* Adjust to avoid layout changes */
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
 .category-links {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     font-size: 80%;
-    padding-top:0.5%;
-    padding-bottom:1%;
+    padding-top: 0.5%;
+    padding-bottom: 1%;
 }
 
-.dropdown-products{
-    padding-bottom:1%;
-}
-
-.selected{
-    background-color: rgb(232, 219, 244);
+/* Dropdown Styling */
+.dropdown-products {
+    padding-bottom: 1%;
 }
 
 .dropdown-toggle {
     padding: 1%;
     font-size: 95%;
-    border:1px solid blueviolet;
-    background-color:white;
-    color:rgb(68, 66, 66);
+    border: 1px solid blueviolet;
+    background-color: white;
+    color: rgb(68, 66, 66);
 }
 
-/* removing boostrap effects */
 .dropdown-toggle:hover,
 .dropdown-toggle:focus,
 .dropdown-toggle:active,
@@ -68,19 +79,24 @@ body{
     box-shadow: none !important;
 }
 
-.dropdown-item{
+.dropdown-menu {
+    margin-top: 0.5rem; /* Consistent spacing to prevent shifts */
+}
+
+.dropdown-item {
     font-size: 95%;
 }
 
-.product-price{
+/* Product Section */
+.product-price {
     font-size: 150%;
 }
 
-.product-btn{
-    padding:5px;
+.product-btn {
+    padding: 5px;
     border-radius: 10px;
-    color:white;
-    width:80%;
+    color: white;
+    width: 80%;
     text-align: center;
     text-decoration: none;
 }
@@ -91,28 +107,128 @@ body{
     color: blueviolet;
 }
 
-.add-to-cart-btn{
-    background-color:blueviolet;
+.add-to-cart-btn {
+    background-color: blueviolet;
 }
 
-.product-btn-container{
-    display:flex;
-    height:40%;
-    width:18%;
-    justify-content: center;
+.product-btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px; /* Adds spacing */
+    width: 100%; /* Matches button width to container */
     align-items: center;
-    gap:10%;
-    position:absolute;
-    bottom:20%;
-    font-size: 90%;
-    padding-right:10px;
 }
 
-.category-container {
-    height: auto;
-    padding: 0.5rem 0;
+/* Product Card */
+.product-card {
+    align-content: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem; /* Adds padding for structure */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional for shadow */
 }
 
+.product-card img {
+    max-height: 200px;
+    width: 100%; /* Full width for consistent sizing */
+    object-fit: cover;
+}
+
+/* Registration Forms */
+.sign-in-form,
+.register-form,
+.reset-password-form {
+    display: flex;
+    flex-flow: column wrap;
+    max-width: 20%;
+    margin: 0 auto;
+    gap: 1.5%;
+    height:47rem;
+    padding-top:5%;
+    
+}
+
+.register-form{
+    height: 54rem;
+}
+
+
+.register-buttons,
+.sign-in-btn,
+.create-account-btn {
+    width: 100%;
+    border-radius: 20px;
+    padding: 3%;
+}
+
+.sign-in-btn {
+    background-color: blueviolet;
+    border-style: 2px solid blueviolet;
+}
+
+.sign-in-btn:hover,
+.sign-in-btn:focus,
+.sign-in-btn:active,
+.sign-in-btn.show {
+    background-color: rgb(160, 80, 235) !important;
+    border-style: 2px solid blueviolet !important;
+}
+
+.text-under-email-field {
+    font-size: 80%;
+    margin-left: 4px;
+}
+
+.create-account-btn {
+    color: blueviolet;
+    background-color: white;
+    border-style: 2px solid blueviolet;
+}
+
+.create-account-btn:hover {
+    background-color: rgb(160, 80, 235) !important;
+}
+
+.not-registered-container,
+.already-member {
+    margin-top: 10%;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+}
+
+.return-to-sign-in,
+.forgot-password {
+    text-decoration: none;
+    font-size: 85%;
+}
+
+/* Validation */
+.validation-message,
+.password-validator {
+    color: red;
+    display: none;
+    font-size: 75%;
+    padding-left: 2.5%;
+}
+
+.password-rules-list {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    font-size: 90%; /* Adjust text size */
+}
+
+.password-rules-list li {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Add spacing between icon and text */
+    margin-bottom: 5px; /* Add spacing between items */
+}
+
+/* Hero Section */
 .hero-section {
     background: url('https://via.placeholder.com/1500x500') no-repeat center center;
     background-size: cover;
@@ -128,163 +244,8 @@ body{
     font-size: 2.5rem;
 }
 
-/* Remove fixed height on product cards */
-.product-card {
-    align-content: center;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    padding: 6%; /* Adds inside padding to give the card more structure */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional for card shadow */
-}
 
-/* Adjust button container for relative positioning */
-.product-btn-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 15px; /* Adds some spacing */
-    width: 20%; /* Matches button width to container */
-    align-items: center;
-}
-
-/* Optional: limit max-height on images */
-.product-card img {
-    max-height: 200px;
-    width: 100%; /* Full width for consistent sizing */
-    object-fit: cover;
-}
-
-/*Registration Form */
-
-.sign-in-form{
-    display:flex;
-    flex-flow:column wrap;
-    max-width:20%;
-    margin: 0 auto;
-    height:80%;
-    margin-top:5%;
-    gap:2%;
-    
-}
-
-.register-form{
-    display:flex;
-    flex-flow:column wrap;
-    max-width:20%;
-    margin: 0 auto;
-    height:80%;
-    margin-top:5%;
-    gap:2%;
-}
-
-.register-buttons{
-    width:100%;
-    border-radius: 20px;
-    padding:3%;
-}
-
-.repeat-password{
-    margin-bottom: 10%;
-}
-
-.sign-in-btn {
-    background-color: blueviolet;
-    border-style:2px solid blueviolet;
-}
-
-.sign-in-btn:hover, 
-.sign-in-btn:focus,
-.sign-in-btn:active,
-.sign-in-btn.show{
-    background-color: rgb(160, 80, 235) !important;
-    border-style:2px solid blueviolet !important
-}
-
-.text-under-email-field{
-   font-size: 80%;
-   margin-left:4px;
-}
-
-.create-account-btn{
-    color:blueviolet;
-    background-color: white;
-    border-style:2px solid blueviolet;
-}
-
-.create-account-btn:hover{
-    background-color: rgb(160, 80, 235) !important;
-}
-
-.not-registered-container{
-    margin-top:10%;
-    display:flex;
-    flex-flow:row wrap;
-    gap:10px;
-}
-
-.return-to-sign-in{
-    text-decoration: none;
-}
-
-/* Reset Password Form Style */
-.reset-password-form{
-    display:flex;
-    flex-flow:column wrap;
-    max-width:20%;
-    margin: 0 auto;
-    height:80%;
-    margin-top:5%;
-    gap:2%;
-}
-
-.already-member{
-    margin-top:10%;
-    display:flex;
-    flex-flow:row wrap;
-    gap:10px;
-}
-
-.forgot-password-container{
-    text-align: left;
-}
-
-.forgot-password{
-    text-decoration: none;
-}
-
-.validation-message{
-    color: red; 
-    display: none;
-    font-size: 75%;
-    padding-left:2.5%;
-}
-
-
-.password-rules-list {
-    list-style: none; /* Remove bullet points */
-    padding: 0; 
-    margin: 0;
-    font-size: 90%; /* Adjust text size */
-}
-
-.password-rules-list li {
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Add spacing between icon and text */
-    margin-bottom: 5px; /* Add some space between items */
-}
-
-.password-validator{
-    color:red;
-    display: none;
-    font-size: 75%;
-    padding-left:2.5%;
-    margin-top:2%;
-}
-    
-
-/* Responsive styles */
+/* Responsive Styles */
 @media (max-width: 992px) {
     .hero-section h1 {
         font-size: 2rem;
