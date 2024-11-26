@@ -2,9 +2,18 @@
 
 html, body{
     padding: 0;
-    height:100%;
-    margin:0 
-}   
+    margin:0;
+    font-family: "Figtree", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.4;
+    text-rendering: optimizeLegibility;
+}
+
+body{
+    min-height:100%;
+}
 
 footer {
     bottom: 0;
@@ -20,9 +29,9 @@ main{
 
 /* Navbar */
 .navbar {
-    height: 70px; /* Fixed height for consistency */
+    height: 70px; 
     padding: 0.5rem 1rem;
-    overflow: hidden; /* Prevent content overflow from affecting height */
+    overflow: hidden; 
 }
 
 .navbar .container {
@@ -147,11 +156,10 @@ main{
     gap: 1.5%;
     height:47rem;
     padding-top:5%;
-    
 }
 
 .register-form{
-    height: 54rem;
+    height: 60rem;
 }
 
 
@@ -212,6 +220,7 @@ main{
     display: none;
     font-size: 75%;
     padding-left: 2.5%;
+    margin-top:2%;
 }
 
 .password-rules-list {

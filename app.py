@@ -22,6 +22,32 @@ def get_base():
     return render_template("base.html")
 
 
+@app.route('/search')
+def search():
+    query = request.args.get('query', '').lower()
+    if not query:
+        return render_template('search-results.html', results=[], query=query)
+
+    # List of collections to exclude
+    excluded_collections = ['users']
+
+    results = []
+    for collection_name in mongo.db.list_collection_names():
+        if collection_name in excluded_collections:
+            continue  
+
+        collection = mongo.db[collection_name]
+
+        # Search for string fields using regex
+        for key in collection.find_one().keys():
+            if isinstance(collection.find_one()[key], str):
+                matches = collection.find({key: {"$regex": query, "$options": "i"}})
+                for match in matches:
+                    match['_collection'] = collection_name  # Add collection name for reference
+                    results.append(match)
+
+    return render_template('search-results.html', results=results, query=query)
+
 @app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():
     if request.method == "POST":
