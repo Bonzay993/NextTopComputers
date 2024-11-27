@@ -57,6 +57,16 @@ main{
    
 }
 
+.navbar-toggler{
+    display:none;
+}
+
+.navbar-toggler-links{
+    display:none;
+}
+
+
+
 .right-link{
     display:flex;
     flex-direction: column;
@@ -76,8 +86,9 @@ main{
     gap: 1rem;
     flex-wrap: wrap;
     font-size: 80%;
-   padding-left:0;
+    padding-left:0;
     font-weight:550;
+    flex-basis: 1;
 }
 
 .category-container {
@@ -294,7 +305,17 @@ main{
         display:none;
     }
 
+    .navbar-right-items{
+        display: none;
+    }
+
+    .navbar-toggler{
+        display:block;
+    }
    
+    .navbar-toggler-links{
+        display:block;
+    }
 }
 
 @media (max-width: 768px) {

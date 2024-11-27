@@ -35,29 +35,26 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Navbar Links -->
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-nav navbar-right-items ms-auto">
+        <a class="nav-link right-link" href="{{ url_for('get_base') }}">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a class="nav-link right-link" href="#">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Contact</span>
+        </a>
+        <a class="nav-link right-link" href="{{ url_for('sign_in') }}">
+            <i class="fa-solid fa-user"></i>
+            <span>Sign In</span>
+        </a>
+        <a class="nav-link right-link" href="#">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Cart</span>
+        </a>
+      </div>
 
-        <!-- Right-Side Links -->
-        <div class="navbar-nav ms-auto">
-          <a class="nav-link right-link" href="{{ url_for('get_base') }}">
-              <i class="fa-solid fa-house"></i>
-              <span>Home</span>
-          </a>
-          <a class="nav-link right-link" href="#">
-              <i class="fa-solid fa-location-dot"></i>
-              <span>Contact</span>
-          </a>
-          <a class="nav-link right-link" href="{{ url_for('sign_in') }}">
-              <i class="fa-solid fa-user"></i>
-              <span>Sign In</span>
-          </a>
-          <a class="nav-link right-link" href="#">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span>Cart</span>
-          </a>
-      </div>
-      </div>
+      
       <!-- Categories Section Under ShopName, Left-Aligned -->
       <div class="bg-light category-container d-flex col-4 ">
         <div class="container  category-links ">
@@ -66,6 +63,14 @@
           <a class="nav-link" href="#">Components</a>
           <a class="nav-link" href="#">Top Deals</a>
         </div>
+      </div>
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="container navbar-toggler-links">
+          <a>test</a>
+          <a>test2</a>
+        </div>
+        
       </div>
     </div>
   </nav>
