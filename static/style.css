@@ -52,8 +52,9 @@ main{
 
 
 .navbar-brand {
-    font-weight: bold;
-    font-size: 150%;
+    width: 110px;
+    object-fit: contain;
+    display:block;
    
 }
 

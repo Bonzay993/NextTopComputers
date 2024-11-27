@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Next Top Computers</title>
+  <link rel="preload" href="../static/img/ntp-logo-pink.webp" as="image">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./static/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +21,9 @@
       
       <!-- Brand Name -->
        <div class="col-4">
-        <a class="navbar-brand" href="{{ url_for('get_base') }}">NextTopComputers</a>
+         <a href="{{ url_for('get_base') }}">
+          <img src="../static/img/ntp-logo-pink.webp" class="navbar-brand" alt="Logo" loading="lazy">
+         </a>
        </div>
       
 
