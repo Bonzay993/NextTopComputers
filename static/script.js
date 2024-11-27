@@ -133,3 +133,25 @@ registerForm.addEventListener('submit', function (event) {
         alert("Please make sure your password meets all the requirements.");
     }
 });
+
+
+/**SCRIPT FOR MOBILE TOGGLE BUTTON */
+
+// Select the toggle button and menu
+let toggleButton = document.getElementById('categoryToggle');
+let categoryMenu = document.getElementById('categoryMenu');
+
+// Event listener for the toggle button
+toggleButton.addEventListener('click', () => {
+  // Toggle the active class for slide-in effect
+  categoryMenu.classList.toggle('active');
+  categoryMenu.classList.toggle('hidden'); // Display menu on first click
+});
+
+// Optional: Close the menu when clicking outside
+document.addEventListener('click', (event) => {
+  if (!categoryMenu.contains(event.target) && !toggleButton.contains(event.target)) {
+    categoryMenu.classList.remove('active');
+    categoryMenu.classList.add('hidden'); // Hide the menu
+  }
+});

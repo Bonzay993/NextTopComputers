@@ -28,42 +28,51 @@ main{
 }
 
 /* Navbar */
-.navbar {
-    height: 70px; 
-    padding: 0.5rem 1rem;
-    overflow: hidden; 
+
+.navbar-nav{
+    font-size:80%;
+    font-weight:550;
 }
 
-.navbar .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%; /* Ensures consistent alignment */
+.navbar{
+    height:auto;
+    padding: 1.5rem 1rem;
 }
+
+.navbar-container{
+    display:flex;
+    gap:5%;
+}
+
+.under-navbar{
+    background-color: blueviolet;
+    text-align: center;
+    color:antiquewhite
+}
+
 
 .navbar-brand {
     font-weight: bold;
     font-size: 150%;
-    display: flex;
-    align-items: center;
+   
 }
 
-/* Category Links */
-.category-container {
-    height: auto; /* Adjust to avoid layout changes */
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 0;
-}
 
 .category-links {
     display: flex;
-    flex-wrap: wrap;
     gap: 1rem;
+    flex-wrap: wrap;
     font-size: 80%;
-    padding-top: 0.5%;
-    padding-bottom: 1%;
+   padding-left:0;
+    font-weight:550;
 }
+
+.category-container {
+    display: flex;
+    justify-content: flex-start; /* Aligns items to the start */
+    padding:1rem 0 1rem 0;
+  }
+
 
 /* Dropdown Styling */
 .dropdown-products {
@@ -267,6 +276,12 @@ main{
     .product-card img {
         height: 180px;
     }
+
+    .category-links{
+        display:none;
+    }
+
+   
 }
 
 @media (max-width: 768px) {
