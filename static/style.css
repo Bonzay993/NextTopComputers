@@ -36,7 +36,7 @@ main{
 
 .navbar{
     height:auto;
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem;
 }
 
 .navbar-container{
@@ -47,7 +47,7 @@ main{
 .under-navbar{
     background-color: blueviolet;
     text-align: center;
-    color:antiquewhite
+    color:antiquewhite;
 }
 
 
@@ -55,6 +55,19 @@ main{
     font-weight: bold;
     font-size: 150%;
    
+}
+
+.right-link{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+}
+
+.right-link i{
+    font-size: 1rem;
+    margin-bottom:7px;
 }
 
 

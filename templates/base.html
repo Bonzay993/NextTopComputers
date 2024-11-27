@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -39,11 +40,23 @@
 
         <!-- Right-Side Links -->
         <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="{{ url_for('get_base') }}">Home</a>
-            <a class="nav-link" href="#">Contact</a>
-            <a class="nav-link" href="{{ url_for('sign_in') }}">Sign In</a>
-            <a class="nav-link" href="#"><i class="bi bi-cart"></i> Cart</a>
-        </div>
+          <a class="nav-link right-link" href="{{ url_for('get_base') }}">
+              <i class="fa-solid fa-house"></i>
+              <span>Home</span>
+          </a>
+          <a class="nav-link right-link" href="#">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Contact</span>
+          </a>
+          <a class="nav-link right-link" href="{{ url_for('sign_in') }}">
+              <i class="fa-solid fa-user"></i>
+              <span>Sign In</span>
+          </a>
+          <a class="nav-link right-link" href="#">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span>Cart</span>
+          </a>
+      </div>
       </div>
       <!-- Categories Section Under ShopName, Left-Aligned -->
       <div class="bg-light category-container d-flex col-4 ">
