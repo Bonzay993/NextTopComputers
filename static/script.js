@@ -155,3 +155,30 @@ document.addEventListener('click', (event) => {
     categoryMenu.classList.add('hidden'); // Hide the menu
   }
 });
+
+
+/**Script for focus on the main search bar */
+function searchBarEffects(){
+        // Get the elements
+  const searchBar = document.querySelector(".nav-search-bar");
+  const overlay = document.getElementById("overlay");
+
+ 
+  
+
+  searchBar.addEventListener("click", (event) => {
+    event.stopPropagation();
+    searchBar.classList.add("search-bar-border");
+    overlay.style.display="block"
+  });
+
+  document.addEventListener('click', () => {
+    searchBar.classList.remove("search-bar-border");
+    overlay.style.display="none"
+  });
+
+
+}
+
+
+

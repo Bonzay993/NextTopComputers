@@ -15,6 +15,8 @@
 </head>
 <body>
 
+  <div id="overlay" class="overlay" aria-hidden="true"></div>
+ 
      <!-- Navbar -->
   <nav class="navbar  navbar-expand-lg  bg-light">
     <div class="container navbar-container d-flex flex-wrap">
@@ -26,27 +28,31 @@
           <img src="../static/img/ntp-logo-pink.svg" class="navbar-brand" alt="Logo">
          </a>
        </div>
-      
-      
-      <div class="row col-7 ms-auto nav-search-container">
-        <!-- Centered Search Bar -->
-        <form class="d-flex  nav-search-bar float-start col-md-8 px-0" action="{{ url_for('search') }}" method="get">
-          <input class="form-control me-2" type="search" name="query" placeholder="Search products" aria-label="Search">
-          <button class="btn btn-outline-primary nav-search-button" type="submit">Search</button>
-        </form>
 
-        
-        <!-- Categories Section Under ShopName, Left-Aligned -->
-        <div class="bg-light category-container d-flex col-9">
-          <div class="container  category-links ">
-            <a class="nav-link" href="{{ url_for('get_desktops') }}">Computing</a>
-            <a class="nav-link" href="#">Gaming</a>
-            <a class="nav-link" href="#">Components</a>
-            <a class="nav-link" href="#">Top Deals</a>
+      
+      
+      
+        <div class="row col-7 ms-auto nav-search-container">
+          <!-- Centered Search Bar -->
+          <div class="row">
+            <div class="search-bar-focus">
+              <form class="nav-search-bar order-1 d-flex flex-sm-row flex-column align-items-center" action="{{ url_for('search') }}" method="get">
+                <input class="border-0 form-control h-100 mt-2 mt-sm-0 search-bar-input" type="search" name="query" placeholder="Search products" aria-label="Search" autocomplete="off" onclick="searchBarEffects()">
+                <button class="btn  mr-sm-1 mt-4 mt-sm-0 flex-fill nav-search-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </form>
+            </div>
           </div>
-        </div>
+          <!-- Categories Section Under ShopName, Left-Aligned -->
+          <div class="bg-light category-container d-flex col-9">
+            <div class="container  category-links ">
+              <a class="nav-link" href="{{ url_for('get_desktops') }}">Computing</a>
+              <a class="nav-link" href="#">Gaming</a>
+              <a class="nav-link" href="#">Components</a>
+              <a class="nav-link" href="#">Top Deals</a>
+            </div>
+          </div>
 
-    </div>
+      </div>
 
     
     <div class="navbar-nav navbar-right-items col-3 ms-auto">
@@ -205,5 +211,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
   <script src="./static/script.js"></script>
+
 </body>
 </html>
