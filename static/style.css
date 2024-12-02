@@ -15,6 +15,8 @@ body{
     min-height:100%;
 }
 
+
+/* Overlay style */
 .overlay {
     position: fixed;
     top: 0;
@@ -23,9 +25,11 @@ body{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Gray overlay */
     z-index: 10;
-    display:none;
-  }
-
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Ensure it's completely hidden when not active */
+    pointer-events: none; /* Disable interaction when hidden */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade-in and fade-out */
+}
  
 
 footer {
@@ -98,14 +102,21 @@ main{
     color:white;
 }
 
+.search-bar-input{
+    font-size: 90%;
+    
+    
+}
 
 .search-bar-input:active,
 .search-bar-input:focus {
     box-shadow: none;
+   
 }
 
 .search-bar-border{
     outline:3px solid blueviolet;
+    
 }
 
 

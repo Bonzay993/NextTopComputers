@@ -14,9 +14,8 @@
 
 </head>
 <body>
-
   <div id="overlay" class="overlay" aria-hidden="true"></div>
- 
+  
      <!-- Navbar -->
   <nav class="navbar  navbar-expand-lg  bg-light">
     <div class="container navbar-container d-flex flex-wrap">
@@ -34,13 +33,15 @@
       
         <div class="row col-7 ms-auto nav-search-container">
           <!-- Centered Search Bar -->
+          
+          
           <div class="row">
-            <div class="search-bar-focus">
-              <form class="nav-search-bar order-1 d-flex flex-sm-row flex-column align-items-center" action="{{ url_for('search') }}" method="get">
-                <input class="border-0 form-control h-100 mt-2 mt-sm-0 search-bar-input" type="search" name="query" placeholder="Search products" aria-label="Search" autocomplete="off" onclick="searchBarEffects()">
-                <button class="btn  mr-sm-1 mt-4 mt-sm-0 flex-fill nav-search-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-              </form>
-            </div>
+              <div class="search-bar-focus">
+                  <form class="nav-search-bar order-1 d-flex flex-sm-row flex-column align-items-center" action="{{ url_for('search') }}" method="get">
+                      <input class="border-0 form-control h-100 mt-2 mt-sm-0 search-bar-input" type="search" name="query" placeholder="Search products" aria-label="Search" autocomplete="off">
+                      <button class="btn mr-sm-1 mt-4 mt-sm-0 flex-fill nav-search-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                  </form>
+              </div>
           </div>
           <!-- Categories Section Under ShopName, Left-Aligned -->
           <div class="bg-light category-container d-flex col-9">

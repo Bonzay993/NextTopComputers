@@ -16,8 +16,14 @@ window.onload = function() {
 
 
 // This checks for Passwords to match in the registration form
-  document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
     
+  initializeSearchBar();
+  matchPasswords();
+
+});
+
+  function matchPasswords(){
     form.addEventListener("submit", function(event) {
       if (passwordField.value !== repeatPasswordField.value) {
         event.preventDefault();
@@ -27,7 +33,8 @@ window.onload = function() {
         passwordError.style.display = "none";  // Hide error message if passwords match
     }
     });
-  });
+
+  }
 
 
 //script for the filter button
@@ -157,28 +164,44 @@ document.addEventListener('click', (event) => {
 });
 
 
-/**Script for focus on the main search bar */
-function searchBarEffects(){
-        // Get the elements
+
+function initializeSearchBar() {
   const searchBar = document.querySelector(".nav-search-bar");
-  const overlay = document.getElementById("overlay");
+  const overlay = document.querySelector(".overlay");
 
- 
-  
+  let isOverlayVisible = false; // Track visibility state of the overlay
 
+  // Function to show the overlay (fade-in)
+  function showOverlay() {
+      if (!isOverlayVisible) {
+          overlay.style.opacity = "1";  // Fade-in overlay
+          overlay.style.visibility = "visible";  // Ensure overlay is visible
+          overlay.style.pointerEvents = "auto"; // Enable interaction with overlay
+          searchBar.classList.add("search-bar-border");  // Highlight search bar
+          isOverlayVisible = true;
+      }
+  }
+
+  // Function to hide the overlay (fade-out)
+  function hideOverlay() {
+      if (isOverlayVisible) {
+          overlay.style.opacity = "0";  // Fade-out overlay
+          overlay.style.visibility = "hidden";  // Hide overlay completely
+          overlay.style.pointerEvents = "none"; // Disable interaction during fade-out
+          searchBar.classList.remove("search-bar-border");  // Remove highlight
+          isOverlayVisible = false;
+      }
+  }
+
+  // Handle clicking on the search bar (show overlay)
   searchBar.addEventListener("click", (event) => {
-    event.stopPropagation();
-    searchBar.classList.add("search-bar-border");
-    overlay.style.display="block"
+      event.stopPropagation();  // Prevent document click from firing
+      showOverlay();  // Show overlay immediately
   });
 
-  document.addEventListener('click', () => {
-    searchBar.classList.remove("search-bar-border");
-    overlay.style.display="none"
+  // Handle clicking anywhere outside the search bar (hide overlay)
+  document.addEventListener("click", () => {
+      hideOverlay();  // Hide overlay immediately
   });
-
 
 }
-
-
-
