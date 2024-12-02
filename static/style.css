@@ -72,6 +72,7 @@ main{
     background-color:white;
 }
 
+
 .search-bar-focus{
     z-index:20;
 }
@@ -173,11 +174,36 @@ main{
     gap: 1rem;
     flex-wrap: wrap;
     font-size: 80%;
-    padding-left:0;
-    font-weight:550;
-    flex-basis: 1;
+    padding-left: 0;
+    font-weight: 550;
 }
 
+.nav-link {
+    padding: 0.5rem 1rem;
+    margin: 0;
+    transition: all 0.3s ease;
+    width: auto;
+    position: relative; /* Ensure the ::after element is positioned relative to the nav-link */
+}
+
+.nav-link::after {
+    content: ''; /* Create the underline with no text */
+    position: absolute; /* Position it absolutely inside the nav-link */
+    left: 10%;
+    bottom: -4px; /* Move the line lower below the text (adjust as needed) */
+    width: 80%; /* Make the underline span the full width of the nav-link */
+    height: 1.5px; /* Set the thickness of the underline (adjust as needed) */
+    background-color: rgb(204, 81, 101); /* Set the color of the underline */
+    transform: scaleX(0); /* Initially hide the underline */
+    transform-origin: bottom right; /* Ensure the underline scales from the right */
+    transition: transform 0.2s ease; /* Smooth transition for the underline */
+    
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1); /* On hover, make the underline visible by scaling it */
+    transform-origin: bottom left; /* Ensure the underline scales from the left when hovering */
+}
 
 
 
