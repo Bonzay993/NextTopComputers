@@ -1,9 +1,15 @@
 import os
+import uuid
+from datetime import datetime, timedelta
 from flask import (Flask, flash, render_template, 
-redirect, request, session, url_for)
+                   redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
+
 
 if os.path.exists("env.py"):
     import env
@@ -15,6 +21,86 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+
+
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+FROM_EMAIL = os.environ.get("FROM_EMAIL")  # e.g., 'no-reply@yourdomain.com'
+
+
+
+def send_reset_email(user_email, reset_token):
+    reset_url = url_for('reset_password', token=reset_token, _external=True)
+    message = Mail(
+        from_email=FROM_EMAIL,
+        to_emails=user_email,
+        subject='Password Reset Request',
+        html_content=f'<p>You requested a password reset. Click the link below to reset your password:</p>'
+                     f'<a href="{reset_url}">Reset Password</a>'
+    )
+    try:
+        sg = SendGridAPIClient(SENDGRID_API_KEY)
+        response = sg.send(message)
+        print(response.status_code, response.body, response.headers)
+    except Exception as e:
+        print(f"Error sending email: {e}")
+
+
+@app.route("/forgot_password", methods=["GET", "POST"])
+def forgot_password():
+    if request.method == "POST":
+        email = request.form.get("email").lower()
+        user = mongo.db.users.find_one({"email": email})
+        
+        if user:
+            # Generate a unique token and store it with an expiration time
+            reset_token = str(uuid.uuid4())
+            expiration_time = datetime.utcnow() + timedelta(hours=1)  # 1 hour expiration
+
+            mongo.db.password_resets.insert_one({
+                "email": email,
+                "reset_token": reset_token,
+                "expiration_time": expiration_time
+            })
+
+            # Send the email with the reset link
+            send_reset_email(email, reset_token)
+
+            flash("If the email is valid, a password reset link has been sent to your inbox.", 'success')
+            return redirect(url_for('sign_in'))
+        else:
+            flash("Email not found. Please register first.", 'error')
+            return redirect(url_for("forgot_password"))
+    
+    return render_template("forgot-password.html")
+
+
+@app.route("/reset_password/<token>", methods=["GET", "POST"])
+def reset_password(token):
+    reset_request = mongo.db.password_resets.find_one({"reset_token": token})
+
+    if reset_request and reset_request["expiration_time"] > datetime.utcnow():
+        if request.method == "POST":
+            new_password = request.form.get("password")
+            hashed_password = generate_password_hash(new_password)
+
+            # Update the user's password
+            mongo.db.users.update_one(
+                {"email": reset_request["email"]},
+                {"$set": {"password": hashed_password}}
+            )
+
+            # Remove the reset token after password reset
+            mongo.db.password_resets.delete_one({"reset_token": token})
+
+            flash("Your password has been successfully reset. Please sign in.", 'success')
+            return redirect(url_for("sign_in"))
+        
+        return render_template("reset-password.html", token=token)
+
+    else:
+        flash("The password reset link is either invalid or expired.", 'error')
+        return redirect(url_for("forgot_password"))
+
 
 @app.route("/")
 @app.route("/get_base")
@@ -102,9 +188,7 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/forgot_password")
-def forgot_password():
-    return render_template("forgot-password.html")
+
 
 @app.route("/get_desktops")
 def get_desktops():
@@ -116,5 +200,4 @@ if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
         port=int(os.environ.get("PORT")),
         debug=True)
-
 

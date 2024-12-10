@@ -310,6 +310,14 @@ main{
     padding-top:5%;
 }
 
+.reset-password-form {
+    gap:3%;
+}
+
+.forgot-pass-email-input{
+    margin-bottom:7%;
+}
+
 .register-form{
     height: 60rem;
 }
