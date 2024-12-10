@@ -8,6 +8,7 @@ from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+from itsdangerous import URLSafeTimedSerializer
 
 
 
@@ -23,26 +24,18 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
-FROM_EMAIL = os.environ.get("FROM_EMAIL")  # e.g., 'no-reply@yourdomain.com'
 
+app.config['SECRET_KEY'] = 'top-secret!'
+app.config['MAIL_SERVER'] = 'smtp.sendgrid.net'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'apikey'
+app.config['MAIL_PASSWORD'] = os.environ.get('SENDGRID_API_KEY')
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
+mail = Mail(app)
 
-
-def send_reset_email(user_email, reset_token):
-    reset_url = url_for('reset_password', token=reset_token, _external=True)
-    message = Mail(
-        from_email=FROM_EMAIL,
-        to_emails=user_email,
-        subject='Password Reset Request',
-        html_content=f'<p>You requested a password reset. Click the link below to reset your password:</p>'
-                     f'<a href="{reset_url}">Reset Password</a>'
-    )
-    try:
-        sg = SendGridAPIClient(SENDGRID_API_KEY)
-        response = sg.send(message)
-        print(response.status_code, response.body, response.headers)
-    except Exception as e:
-        print(f"Error sending email: {e}")
+# Serializer for generating and verifying tokens
+s = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
 
 @app.route("/forgot_password", methods=["GET", "POST"])
@@ -52,59 +45,52 @@ def forgot_password():
         user = mongo.db.users.find_one({"email": email})
         
         if user:
-            # Generate a unique token and store it with an expiration time
-            reset_token = str(uuid.uuid4())
-            expiration_time = datetime.utcnow() + timedelta(hours=1)  # 1 hour expiration
+            # Generate a token for password reset
+            token = s.dumps(email, salt='password-reset-salt')
+            reset_url = url_for('reset_password', token=token, _external=True)
 
-            mongo.db.password_resets.insert_one({
-                "email": email,
-                "reset_token": reset_token,
-                "expiration_time": expiration_time
-            })
+            # Send the password reset email using SendGrid
+            message = Mail(
+                from_email=app.config['MAIL_DEFAULT_SENDER'],
+                to_emails=email,
+                subject="Password Reset Request",
+                html_content=f"<p>Click the following link to reset your password:</p> <a href='{reset_url}'>{reset_url}</a>"
+            )
+            try:
+                sg = SendGridAPIClient(app.config['MAIL_PASSWORD'])
+                response = sg.send(message)
+                print(response.status_code, response.body, response.headers)
+            except Exception as e:
+                print(f"An error occurred while sending the email: {e}")
+                flash("An error occurred while sending the reset email. Please try again later.", 'error')
 
-
-            
-
-            # Send the email with the reset link
-            send_reset_email(email, reset_token)
-
-            flash("If the email is valid, a password reset link has been sent to your inbox.", 'success')
-            return redirect(url_for('sign_in'))
+            flash("If this email is valid, you will receive a password reset link shortly.", 'info')
+            return redirect(url_for('forgot_password'))
         else:
-            flash("Email not found. Please register first.", 'error')
-            return redirect(url_for("forgot_password"))
-    
-    return render_template("forgot-password.html")
+            flash("No account found with that email address.", 'error')
+            return redirect(url_for('forgot_password'))
 
+    return render_template("forgot-password.html")
 
 @app.route("/reset_password/<token>", methods=["GET", "POST"])
 def reset_password(token):
-    reset_request = mongo.db.password_resets.find_one({"reset_token": token})
+    try:
+        email = s.loads(token, salt='password-reset-salt', max_age=3600)  # token expires after 1 hour
+    except Exception as e:
+        flash("The password reset link is invalid or has expired.", 'error')
+        return redirect(url_for('forgot_password'))
 
-    if reset_request and reset_request["expiration_time"] > datetime.utcnow():
-        if request.method == "POST":
-            new_password = request.form.get("password")
-            hashed_password = generate_password_hash(new_password)
-
-            # Update the user's password
-            mongo.db.users.update_one(
-                {"email": reset_request["email"]},
-                {"$set": {"password": hashed_password}}
-            )
-
-            # Remove the reset token after password reset
-            mongo.db.password_resets.delete_one({"reset_token": token})
-
-            flash("Your password has been successfully reset. Please sign in.", 'success')
-            return redirect(url_for("sign_in"))
+    if request.method == "POST":
+        new_password = request.form.get("password")
+        hashed_password = generate_password_hash(new_password)
         
-        return render_template("reset-password.html", token=token)
+        # Update the password in the database
+        mongo.db.users.update_one({"email": email}, {"$set": {"password": hashed_password}})
+        
+        flash("Your password has been updated successfully.", 'success')
+        return redirect(url_for('sign_in'))
 
-    else:
-        flash("The password reset link is either invalid or expired.", 'error')
-        return redirect(url_for("forgot_password"))
-
-
+    return render_template("reset-password.html", token=token)
 @app.route("/")
 @app.route("/get_base")
 def get_base():
