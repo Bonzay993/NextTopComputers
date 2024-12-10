@@ -6,9 +6,7 @@ from flask import (Flask, flash, render_template,
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
-from itsdangerous import URLSafeTimedSerializer
+from send_emails import EmailService
 
 
 
@@ -20,11 +18,6 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
-
-mongo = PyMongo(app)
-
-
-
 app.config['SECRET_KEY'] = 'top-secret!'
 app.config['MAIL_SERVER'] = 'smtp.sendgrid.net'
 app.config['MAIL_PORT'] = 587
@@ -32,10 +25,10 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'apikey'
 app.config['MAIL_PASSWORD'] = os.environ.get('SENDGRID_API_KEY')
 app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
-mail = Mail(app)
+app.config['SENDGRID_API_KEY'] = os.environ.get('SENDGRID_API_KEY') 
 
-# Serializer for generating and verifying tokens
-s = URLSafeTimedSerializer(app.config['SECRET_KEY'])
+mongo = PyMongo(app)
+email_service = EmailService(app)
 
 
 @app.route("/forgot_password", methods=["GET", "POST"])
@@ -46,37 +39,31 @@ def forgot_password():
         
         if user:
             # Generate a token for password reset
-            token = s.dumps(email, salt='password-reset-salt')
+            token = email_service.generate_token(email)
             reset_url = url_for('reset_password', token=token, _external=True)
 
-            # Send the password reset email using SendGrid
-            message = Mail(
-                from_email=app.config['MAIL_DEFAULT_SENDER'],
-                to_emails=email,
-                subject="Password Reset Request",
-                html_content=f"<p>Click the following link to reset your password:</p> <a href='{reset_url}'>{reset_url}</a>"
-            )
-            try:
-                sg = SendGridAPIClient(app.config['MAIL_PASSWORD'])
-                response = sg.send(message)
-                print(response.status_code, response.body, response.headers)
-            except Exception as e:
-                print(f"An error occurred while sending the email: {e}")
+            # Send the password reset email
+            subject = "Password Reset Request"
+            html_content = f"<p>Click the following link to reset your password:</p> <a href='{reset_url}'>{reset_url}</a>"
+            response = email_service.send_email(email, subject, html_content)
+
+            if response:
+                flash("If this email is valid, you will receive a password reset link shortly.", 'info')
+            else:
                 flash("An error occurred while sending the reset email. Please try again later.", 'error')
 
-            flash("If this email is valid, you will receive a password reset link shortly.", 'info')
-            return redirect(url_for('forgot_password'))
         else:
             flash("No account found with that email address.", 'error')
-            return redirect(url_for('forgot_password'))
+        
+        # Render the same page to display the flash message
+        return render_template("forgot-password.html")
 
     return render_template("forgot-password.html")
 
 @app.route("/reset_password/<token>", methods=["GET", "POST"])
 def reset_password(token):
-    try:
-        email = s.loads(token, salt='password-reset-salt', max_age=3600)  # token expires after 1 hour
-    except Exception as e:
+    email = email_service.verify_token(token)
+    if not email:
         flash("The password reset link is invalid or has expired.", 'error')
         return redirect(url_for('forgot_password'))
 
@@ -91,6 +78,8 @@ def reset_password(token):
         return redirect(url_for('sign_in'))
 
     return render_template("reset-password.html", token=token)
+
+
 @app.route("/")
 @app.route("/get_base")
 def get_base():
