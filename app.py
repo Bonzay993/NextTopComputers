@@ -62,6 +62,9 @@ def forgot_password():
                 "expiration_time": expiration_time
             })
 
+
+            
+
             # Send the email with the reset link
             send_reset_email(email, reset_token)
 
