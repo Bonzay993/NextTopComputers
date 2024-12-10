@@ -22,9 +22,9 @@
       
       <!-- Brand Name -->
        
-       <div class="d-flex flex-column col-2 ms-auto">
-         <a href="{{ url_for('get_base') }}">
-          <img src="../static/img/ntp-logo-pink.svg" class="navbar-brand" alt="Logo">
+       <div class="d-flex flex-column col-2 ms-auto navbar-brand-container">
+         <a class="navbar-brand" href="{{ url_for('get_base') }}">
+          <img src="../static/img/ntp-logo-violet.png" class="navbar-brand-img" alt="Logo">
          </a>
        </div>
 
@@ -46,10 +46,10 @@
           <!-- Categories Section Under ShopName, Left-Aligned -->
           <div class="bg-light category-container d-flex col-9">
             <div class="container  category-links ">
-              <a class="nav-link" href="{{ url_for('get_desktops') }}">Computing</a>
-              <a class="nav-link" href="#">Gaming</a>
-              <a class="nav-link" href="#">Components</a>
-              <a class="nav-link" href="#">Top Deals</a>
+              <a class="nav-link nav-category" href="{{ url_for('get_desktops') }}">Computing</a>
+              <a class="nav-link nav-category" href="#">Gaming</a>
+              <a class="nav-link nav-category" href="#">Components</a>
+              <a class="nav-link nav-category" href="#">Top Deals</a>
             </div>
           </div>
 

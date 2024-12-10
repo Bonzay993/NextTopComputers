@@ -80,8 +80,8 @@ main{
 .nav-search-button{
     z-index:20;
     border-radius:20px;
-    background-color:blueviolet;
-    border: 0px solid blueviolet;
+    background-color:#4822a8;
+    border: 0px solid #4822a8;
     color:white;
 }
 
@@ -91,9 +91,10 @@ main{
 
 .nav-search-button:hover,
 .nav-search-button:active{
-    background-color: blueviolet;;
+    background-color:#4822a8;
     color:white;
     transition: 1.1s;
+    z-index:10;
 }
 
 
@@ -116,7 +117,7 @@ main{
 }
 
 .search-bar-border{
-    outline:3px solid blueviolet;
+    outline:3px solid #4822a8;
     
 }
 
@@ -127,7 +128,7 @@ main{
 }
 
 .under-navbar{
-    background-color: blueviolet;
+    background-color: #4822a8;
     text-align: center;
     color:antiquewhite;
 }
@@ -137,10 +138,15 @@ main{
     justify-content: right;
 }
 
-.navbar-brand {
-    width: 120px;
+.navbar-brand{
+    width:120px;
+}
+
+.navbar-brand-img {
+    width:120px;
     display:block;
     object-fit:contain;
+    
 }
 
 .navbar-toggler{
@@ -178,15 +184,15 @@ main{
     font-weight: 550;
 }
 
-.nav-link {
-    padding: 0.5rem 1rem;
+.nav-category {
+    padding: 0.3rem 0.5rem;
     margin: 0;
     transition: all 0.3s ease;
     width: auto;
     position: relative; /* Ensure the ::after element is positioned relative to the nav-link */
 }
 
-.nav-link::after {
+.nav-category::after {
     content: ''; /* Create the underline with no text */
     position: absolute; /* Position it absolutely inside the nav-link */
     left: 10%;
@@ -200,7 +206,7 @@ main{
     
 }
 
-.nav-link:hover::after {
+.nav-category:hover::after {
     transform: scaleX(1); /* On hover, make the underline visible by scaling it */
     transform-origin: bottom left; /* Ensure the underline scales from the left when hovering */
 }
@@ -215,7 +221,7 @@ main{
 .dropdown-toggle {
     padding: 1%;
     font-size: 95%;
-    border: 1px solid blueviolet;
+    border: 1px solid #4822a8;
     background-color: white;
     color: rgb(68, 66, 66);
 }
@@ -226,7 +232,7 @@ main{
 .dropdown-toggle.show {
     background-color: white !important;
     color: rgb(68, 66, 66) !important;
-    border: 1px solid blueviolet;
+    border: 1px solid #4822a8;
     box-shadow: none !important;
 }
 
@@ -243,23 +249,26 @@ main{
     font-size: 150%;
 }
 
+
 .product-btn {
-    padding: 5px;
+    padding: 8px;
     border-radius: 10px;
     color: white;
     width: 80%;
     text-align: center;
     text-decoration: none;
+    font-size: 90%;
 }
 
 .view-product-btn {
     background-color: white;
-    box-shadow: 0px 0px 0px 2px blueviolet inset;
-    color: blueviolet;
+    box-shadow: 0px 0px 0px 2px #4822a8 inset;
+    color: #4822a8 ;
+    font-size: 90%;
 }
 
 .add-to-cart-btn {
-    background-color: blueviolet;
+    background-color: #4822a8;
 }
 
 .product-btn-container {
@@ -269,6 +278,7 @@ main{
     margin-top: 15px; /* Adds spacing */
     width: 100%; /* Matches button width to container */
     align-items: center;
+    
 }
 
 /* Product Card */
@@ -311,19 +321,20 @@ main{
     width: 100%;
     border-radius: 20px;
     padding: 3%;
+    border-color:#4822a8 !important;
+    
+    
 }
 
 .sign-in-btn {
-    background-color: blueviolet;
-    border-style: 2px solid blueviolet;
+    background-color: #4822a8;
 }
 
 .sign-in-btn:hover,
 .sign-in-btn:focus,
 .sign-in-btn:active,
 .sign-in-btn.show {
-    background-color: rgb(160, 80, 235) !important;
-    border-style: 2px solid blueviolet !important;
+    background-color: #9a82d5  !important;
 }
 
 .text-under-email-field {
@@ -332,13 +343,13 @@ main{
 }
 
 .create-account-btn {
-    color: blueviolet;
+    color: #4822a8 ;
     background-color: white;
-    border-style: 2px solid blueviolet;
+    border-style: 2px solid #4822a8 ;
 }
 
 .create-account-btn:hover {
-    background-color: rgb(160, 80, 235) !important;
+    background-color: #4822a8 !important;
 }
 
 .not-registered-container,
@@ -352,7 +363,7 @@ main{
 .return-to-sign-in,
 .forgot-password {
     text-decoration: none;
-    font-size: 85%;
+    font-size: 80%;
 }
 
 /* Validation */
