@@ -172,6 +172,36 @@ main{
     margin-bottom:7px;
 }
 
+.category-item{ 
+    position:relative;
+}
+
+.category-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 5; /* Ensure it is under the underline but above other content */
+    min-width: 200px;
+}
+
+
+.category-dropdown a {
+    display: block;
+    padding: 5px 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 100%;
+}
+
+.category-dropdown a:hover {
+    background-color: #f0f0f0;
+}
+
 
 
 .category-links {
@@ -181,6 +211,7 @@ main{
     font-size: 80%;
     padding-left: 0;
     font-weight: 550;
+    position: relative;
 }
 
 .nav-category {
@@ -188,29 +219,28 @@ main{
     margin: 0;
     transition: all 0.3s ease;
     width: auto;
-    position: relative; /* Ensure the ::after element is positioned relative to the nav-link */
+    position: relative; /* Ensure positioning for the ::after effect */
+    z-index: 10; /* Make sure the hover effect is above the dropdown */
 }
 
 .nav-category::after {
-    content: ''; /* Create the underline with no text */
-    position: absolute; /* Position it absolutely inside the nav-link */
+    content: ''; /* Create the underline */
+    position: absolute; /* Position it inside the nav-link */
     left: 10%;
-    bottom: -4px; /* Move the line lower below the text (adjust as needed) */
-    width: 80%; /* Make the underline span the full width of the nav-link */
-    height: 1.5px; /* Set the thickness of the underline (adjust as needed) */
-    background-color: rgb(204, 81, 101); /* Set the color of the underline */
+    bottom:0px;
+    width: 80%;
+    height: 1.5px;
+    background-color: rgb(204, 81, 101); /* Color of the underline */
     transform: scaleX(0); /* Initially hide the underline */
-    transform-origin: bottom right; /* Ensure the underline scales from the right */
-    transition: transform 0.2s ease; /* Smooth transition for the underline */
-    
+    transform-origin: bottom right;
+    transition: transform 0.2s ease;
+    z-index: 15; /* Ensure the underline is on top */
 }
 
 .nav-category:hover::after {
     transform: scaleX(1); /* On hover, make the underline visible by scaling it */
     transform-origin: bottom left; /* Ensure the underline scales from the left when hovering */
 }
-
-
 
 /* Dropdown Styling */
 .dropdown-products {

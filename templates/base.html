@@ -45,13 +45,42 @@
           </div>
           <!-- Categories Section Under ShopName, Left-Aligned -->
           <div class="bg-light category-container d-flex col-9">
-            <div class="container  category-links ">
-              <a class="nav-link nav-category" href="{{ url_for('get_desktops') }}">Computing</a>
-              <a class="nav-link nav-category" href="#">Gaming</a>
-              <a class="nav-link nav-category" href="#">Components</a>
-              <a class="nav-link nav-category" href="#">Top Deals</a>
+            <div class="container category-links">
+              <div class="category-item">
+                <a class="nav-link nav-category" href="{{ url_for('get_desktops') }}">Computing</a>
+                <div class="category-dropdown">
+                  <a href="#">Laptops</a>
+                  <a href="#">Desktops</a>
+                  <a href="#">Accessories</a>
+                </div>
+              </div>
+              <div class="category-item">
+                <a class="nav-link nav-category" href="#">Gaming</a>
+                <div class="category-dropdown">
+                  <a href="#">Consoles</a>
+                  <a href="#">Games</a>
+                  <a href="#">Controllers</a>
+                </div>
+              </div>
+              <div class="category-item">
+                <a class="nav-link nav-category" href="#">Components</a>
+                <div class="category-dropdown">
+                  <a href="#">Processors</a>
+                  <a href="#">Graphics Cards</a>
+                  <a href="#">RAM</a>
+                </div>
+              </div>
+              <div class="category-item">
+                <a class="nav-link nav-category" href="#">Top Deals</a>
+                <div class="category-dropdown">
+                  <a href="#">Today's Deals</a>
+                  <a href="#">Weekly Deals</a>
+                  <a href="#">Clearance</a>
+                </div>
+              </div>
             </div>
           </div>
+        
 
       </div>
 

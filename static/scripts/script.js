@@ -30,9 +30,9 @@ window.onload = function() {
 
 // This checks for Passwords to match in the registration form
 document.addEventListener("DOMContentLoaded", () => {
-    
   initializeSearchBar();
   matchPasswords();
+  navbarItemsHover();
 
 });
 
@@ -221,4 +221,27 @@ function initializeSearchBar() {
       hideOverlay();  // Hide overlay immediately
   });
 
+}
+
+
+
+function navbarItemsHover() {
+  document.querySelectorAll('.category-item').forEach(container => {
+    const navCategory = container.querySelector('.nav-category');
+    const dropdown = container.querySelector('.category-dropdown');
+
+    // Function to show the dropdown
+    const showDropdown = () => {
+      dropdown.style.display = 'block';
+    };
+
+    // Function to hide the dropdown
+    const hideDropdown = () => {
+      dropdown.style.display = 'none';
+    };
+
+    // Attach event listeners
+    navCategory.addEventListener('mouseenter', showDropdown);
+    container.addEventListener('mouseleave', hideDropdown);
+  });
 }
