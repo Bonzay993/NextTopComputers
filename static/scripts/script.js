@@ -5,6 +5,19 @@ const form = document.getElementById("registerForm");
 const passwordField = document.getElementById("password");
 const repeatPasswordField = document.getElementById("repeat-password");
 const registerForm = document.getElementById('registerForm');
+const RESET_PASSWORD = document.querySelector('.reset-password');
+const forms = [registerForm, RESET_PASSWORD]
+
+
+const passwordInput = document.getElementById('password');
+const passwordRulesDiv = document.querySelector('.password-validator');
+const passwordRules = {
+    uppercase: /[A-Z]/,
+    lowercase: /[a-z]/,
+    number: /\d/,
+    minLength: /.{8,}/
+};
+
 
 
 window.onload = function() {
@@ -23,18 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-  function matchPasswords(){
-    form.addEventListener("submit", function(event) {
-      if (passwordField.value !== repeatPasswordField.value) {
-        event.preventDefault();
-        passwordError.style.display = "block";  // Show error message
-        repeatPasswordField.focus();
-      }  else {
-        passwordError.style.display = "none";  // Hide error message if passwords match
-    }
-    });
 
-  }
 
 
 //script for the filter button
@@ -57,6 +59,23 @@ function selectItem(element){
 
 /** Registration Form Fields Validation */
 
+function matchPasswords() {
+ 
+  forms.forEach((form) => {
+      if (form) { // Check if the form exists before adding an event listener
+          form.addEventListener("submit", function (event) {
+              if (passwordField.value !== repeatPasswordField.value) {
+                  event.preventDefault();
+                  passwordError.style.display = "block"; // Show error message
+                  repeatPasswordField.focus();
+              } else {
+                  passwordError.style.display = "none"; // Hide error message if passwords match
+              }
+          });
+      }
+  });
+}
+
 // Validation messages for First Name, Last Name, and Email
 document.querySelectorAll('#first_name, #last_name, #email, #password, #password_rules').forEach(input => {
   input.addEventListener('blur', function () {
@@ -71,14 +90,6 @@ document.querySelectorAll('#first_name, #last_name, #email, #password, #password
   });
 });
 
-const passwordInput = document.getElementById('password');
-const passwordRulesDiv = document.querySelector('.password-validator');
-const passwordRules = {
-    uppercase: /[A-Z]/,
-    lowercase: /[a-z]/,
-    number: /\d/,
-    minLength: /.{8,}/
-};
 
 function updatePasswordRules() {
   let value = passwordInput.value;
@@ -133,13 +144,19 @@ function arePasswordRulesSatisfied() {
 }
 
 // Event listener for form submission
-registerForm.addEventListener('submit', function (event) {
-    // If password rules are not satisfied, prevent form submission
-    if (!arePasswordRulesSatisfied()) {
-        event.preventDefault(); // Prevent form submission
-        alert("Please make sure your password meets all the requirements.");
-    }
+forms.forEach((form) =>{
+  if (form) {
+    form.addEventListener('submit', function (event) {
+      // If password rules are not satisfied, prevent form submission
+      if (!arePasswordRulesSatisfied()) {
+          event.preventDefault(); // Prevent form submission
+          alert("Please make sure your password meets all the requirements.");
+      }
+    });
+  }
+  
 });
+
 
 
 /**SCRIPT FOR MOBILE TOGGLE BUTTON */
