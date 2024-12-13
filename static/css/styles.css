@@ -15,7 +15,6 @@ body{
     min-height:100%;
 }
 
-
 /* Overlay style */
 .overlay {
     position: fixed;
@@ -157,8 +156,6 @@ main{
     display:none;
 }
 
-
-
 .right-link{
     display:flex;
     flex-direction: column;
@@ -179,7 +176,7 @@ main{
 .category-dropdown {
     display: none;
     position: absolute;
-    top: calc(100% + 1px);
+    top: calc(100% + 0.5px);
     left: 0;
     background-color: white;
     border: 1px solid #ddd;
@@ -445,7 +442,6 @@ main{
     font-size: 2.5rem;
 }
 
-
 /* Responsive Styles */
 @media (max-width: 992px) {
     .hero-section h1 {
@@ -485,4 +481,29 @@ main{
     .navbar .form-control {
         flex-grow: 1;
     }
+}
+
+
+@media (max-width:412px) {
+    .navbar-brand-img{
+        max-width: 70px;
+        margin-left:0px;
+    }
+
+    .navbar-brand{
+        width:100%;
+    }
+
+    .nav-search-bar{
+        padding-left:5px;
+        font-size:80%;
+        width:200px; 
+    }
+
+
+    .nav-search-button i{
+        font-size: 85%;
+       
+    }
+
 }

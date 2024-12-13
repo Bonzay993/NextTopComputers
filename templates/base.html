@@ -22,8 +22,8 @@
       
       <!-- Brand Name -->
        
-       <div class="d-flex flex-column col-2 ms-auto navbar-brand-container">
-         <a class="navbar-brand" href="{{ url_for('get_base') }}">
+       <div class="d-flex flex-column  col-2 col-md-2  navbar-brand-container">
+         <a class="navbar-brand " href="{{ url_for('get_base') }}">
           <img src="../static/img/ntp-logo-violet.png" class="navbar-brand-img" alt="Logo">
          </a>
        </div>
@@ -31,15 +31,15 @@
       
       
       
-        <div class="row col-7 ms-auto nav-search-container">
+        <div class="row col-7 nav-search-container">
           <!-- Centered Search Bar -->
           
           
           <div class="row">
               <div class="search-bar-focus">
-                  <form class="nav-search-bar order-1 d-flex flex-sm-row flex-column align-items-center" action="{{ url_for('search') }}" method="get">
-                      <input class="border-0 form-control h-100 mt-2 mt-sm-0 search-bar-input" type="search" name="query" placeholder="Search products" aria-label="Search" autocomplete="off">
-                      <button class="btn mr-sm-1 mt-4 mt-sm-0 flex-fill nav-search-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                  <form class="nav-search-bar col-8 d-flex flex-row flex-sm-row align-items-center" action="{{ url_for('search') }}" method="get">
+                      <input class="border-0 form-control search-bar-input" type="search" name="query" placeholder="Search products" aria-label="Search" autocomplete="off">
+                      <button class="btn nav-search-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                   </form>
               </div>
           </div>
