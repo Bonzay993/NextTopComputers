@@ -86,6 +86,7 @@ main{
 
 .nav-search-button i{
     color:white;
+    font-size: 90%;
 }
 
 .nav-search-button:hover,
@@ -484,7 +485,12 @@ main{
 }
 
 
-@media (max-width:412px) {
+@media (max-width:431px) {
+
+    .navbar{
+        height:140px;
+    }
+
     .navbar-brand-img{
         max-width: 70px;
         margin-left:0px;
@@ -494,16 +500,25 @@ main{
         width:100%;
     }
 
+
     .nav-search-bar{
-        padding-left:5px;
+        padding-left:7px;
         font-size:80%;
-        width:200px; 
+        width:200px;
+        height:40px;
     }
 
 
+
     .nav-search-button i{
-        font-size: 85%;
-       
+        font-size: 80%;
+        
+        
+    }
+
+    .under-navbar{
+        font-size:80%;
+        padding:1%;
     }
 
 }
