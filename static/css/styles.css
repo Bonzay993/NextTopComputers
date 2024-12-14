@@ -45,21 +45,12 @@ main{
 
 /* Navbar */
 
-.navbar-nav{
-    font-size:80%;
-    font-weight:550;
-}
 
 .navbar{
     height:180px;
     margin:0 
 }
 
-.navbar-container{
-    display:flex;
-    gap:4px;
-    width:86%;
-}
 
 .nav-search-bar{
     border: 1px solid rgb(196, 190, 201);
@@ -120,31 +111,43 @@ main{
     
 }
 
+
+
 .navbar-right-items{
     justify-content: right;
+    font-size:13px;
+    font-weight: 450;
+    color:#213038;
+    gap:5%;
 }
 
 
 .category-container{
     position:relative;
     top:40px;
+    font-size:13px;
+    font-weight: 450;
+    color:#213038
+    
 }
 
 .under-navbar{
     background-color: #4822a8;
     text-align: center;
     color:antiquewhite;
+    z-index:1;
+    
 }
 
 .navbar-brand{
     width:120px;
+    
 }
 
 .navbar-brand-img {
     width:120px;
     display:block;
     object-fit:contain;
-    
 }
 
 .navbar-toggler{
@@ -208,9 +211,7 @@ main{
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    font-size: 80%;
     padding-left: 0;
-    font-weight: 550;
     position: relative;
 }
 
@@ -272,6 +273,8 @@ main{
 .dropdown-item {
     font-size: 95%;
 }
+
+
 
 /* Product Section */
 .product-price {
@@ -373,7 +376,7 @@ main{
 .sign-in-btn:focus,
 .sign-in-btn:active,
 .sign-in-btn.show {
-    background-color: #9a82d5  !important;
+    background-color: #7255b9  !important;
 }
 
 .text-under-email-field {
@@ -431,18 +434,25 @@ main{
 
 /* Hero Section */
 .hero-section {
-    background: url('https://via.placeholder.com/1500x500') no-repeat center center;
+    background: url("../img/hero-image.png") no-repeat center center;
     background-size: cover;
     height: 400px;
-    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    color:#4822a8;
+    margin-top:1.5%;
+    border-radius: 22px;
+    box-shadow: inset 0px 0px 0px 0.2px #94919b;
 }
 
 .hero-section h1 {
     font-size: 2.5rem;
+}
+
+.product-card{
+    border-radius: 20px;
 }
 
 /* Responsive Styles */
@@ -451,9 +461,10 @@ main{
         font-size: 2rem;
     }
 
-    .navbar-container{
-        width:98%;
+    .container{
+        max-width: 900px;
     }
+
 
     .category-links {
         justify-content: center;
@@ -479,11 +490,9 @@ main{
         justify-content: space-between;
         
     }
-
     .nav-search-container{
         justify-content: center;
     }
-
 
    
 }
@@ -491,6 +500,10 @@ main{
 @media (max-width: 768px) {
     .hero-section {
         height: 300px;
+    }
+
+    .container{
+        max-width: 700px;
     }
 
     .navbar .form-control {
@@ -511,6 +524,8 @@ main{
 
     .navbar-right-items{
         order:2;
+        justify-content: center;
+        gap:7%;
     }
 
     .toggle-container{
@@ -519,7 +534,14 @@ main{
 
     .nav-search-container{
         order:4;
+        margin-top:1.5%;
     }
+
+    .under-navbar{
+        margin-bottom: 1%;
+    }
+
+
 
 
 

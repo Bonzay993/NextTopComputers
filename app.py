@@ -83,7 +83,22 @@ def reset_password(token):
 @app.route("/")
 @app.route("/get_base")
 def get_base():
-    return render_template("base.html")
+      featured_products = get_featured_products()
+      return render_template("base.html", featured_products=featured_products)
+
+def get_featured_products():
+    featured_products = []
+    collection_names = mongo.db.list_collection_names()
+    for collection_name in collection_names:
+         collection = mongo.db[collection_name]  # Access the collection
+        # Query for featured products
+         products = collection.find({"featured": "yes"})
+        # Add these products to the featured list
+         featured_products.extend(products)
+
+    return featured_products
+    
+
 
 
 @app.route('/search')
