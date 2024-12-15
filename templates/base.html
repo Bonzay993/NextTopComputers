@@ -143,9 +143,12 @@
         <a>Enjoy Free delivery until Christmas</a>
       </div>
     </div>
+  
 
     {% block content %}
       <!-- Hero Section -->
+  
+    </section>
     <section class="hero-section container ">
       
       <div class="container">
@@ -167,7 +170,7 @@
               <img src="{{ product.IMG_URL }}" class="card-img-top" alt="{{ product.name }}">
               <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
-                <p class="discounted">{{ product.discount }} % off</p>
+                <p class="discounted"> -{{ product.discount }} % </p>
                 <strike><p class="card-text product-price featured-product-price">£{{ product.price }}</p></strike>
                 <p class="final-price featured-final-price"></p>
                 <a href="#" class="btn btn-primary btn-custom add-to-cart-btn">Add to Cart</a>

@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 
-<section class="products-section py-5">
+<section class="products-section">
+    <div class="section-breadcrumbs-wrapper">
+        <div class="section-breadcrumbs">
+          <div class="container mb-0">
+            <a class="breadcrumbs-anchor" href="{{ url_for('get_base') }}">Home</a>
+            <a>></a>
+            <a class="breadcrumbs-anchor breadcrumbs-anchor-last-el">Peripherals</a>
+          </div>
+        </div>
+    </div>
     <div class="products-container container py-5">
         <div class="row">
             <!-- Filter Column on the Left -->

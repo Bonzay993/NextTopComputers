@@ -147,7 +147,7 @@ main{
 .category-container{
     position:relative;
     top:40px;
-    font-size:13px;
+    font-size:14px;
     font-weight: 450;
     color:#213038
     
@@ -294,6 +294,21 @@ main{
 
 .dropdown-item {
     font-size: 95%;
+}
+
+.section-breadcrumbs-wrapper{
+    border: 1px solid rgb(232, 225, 225);
+    align-content: center;
+    padding:0.3%;
+}
+
+.breadcrumbs-anchor{
+    text-decoration: none; 
+    font-size: 13px;
+}
+
+.breadcrumbs-anchor-last-el{
+    color: #213038;
 }
 
 /* Product Section */
