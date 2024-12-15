@@ -285,6 +285,14 @@ main{
     font-size: 150%;
 }
 
+.featured-product-price {
+    font-size: 120%;
+}
+
+.featured-final-price{
+    font-size: 150%;
+}
+
 
 .product-btn {
     padding: 8px;
@@ -331,22 +339,36 @@ main{
     height:110%;
 }
 
+
+
 .card-title{
     font-size:16px;
     text-align: left;
+    height:25%;
 }
 
 .card-img-top{
     max-width: 90%;
     text-align: center;
-    margin: auto;
-   
+    margin: 0 auto;
 }
 
 .card-body{
     display:flex;
     flex-flow: column;
     justify-content: space-between;
+}
+
+
+
+.discounted{
+    color:white;
+    background-color: red;
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 8px;
+    font-size: 110%;
+    font-weight: 600;
 }
 
 .add-to-cart-btn{

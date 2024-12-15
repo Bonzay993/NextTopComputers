@@ -157,14 +157,16 @@
     <section id="products" class="py-5 not-selectable">
       <div class="container">
         <h2 class="text-center mb-5">Featured Products</h2>
-        <div class="row">
+        <div class="row mb-5">
           {% for product in featured_products %}
           <div class="col-md-3 mb-4 col-sm-6">
             <div class="card product-card featured-product-card">
               <img src="{{ product.IMG_URL }}" class="card-img-top" alt="{{ product.name }}">
               <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
-                <p class="card-text">£{{ product.price }}</p>
+                <p class="discounted">{{ product.discount }} % off</p>
+                <strike><p class="card-text product-price featured-product-price">£{{ product.price }}</p></strike>
+                <p class="final-price featured-final-price"></p>
                 <a href="#" class="btn btn-primary btn-custom add-to-cart-btn">Add to Cart</a>
               </div>
             </div>

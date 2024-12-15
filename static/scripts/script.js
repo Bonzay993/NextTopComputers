@@ -31,15 +31,17 @@ window.onload = function() {
 };
 
 
+  
+
+
+
 // This checks for Passwords to match in the registration form
 document.addEventListener("DOMContentLoaded", () => {
   initializeSearchBar();
   matchPasswords();
   navbarItemsHover();
-
+  calculateDiscount();
 });
-
-
 
 
 //script for the filter button
@@ -255,4 +257,38 @@ function navbarItemsHover() {
     navCategory.addEventListener('mouseenter', showDropdown, overlayForMain);
     container.addEventListener('mouseleave', hideDropdown);
   });
+}
+
+
+function calculateDiscount(){
+  const PRODUCTS = document.querySelectorAll(".product-card");
+  
+
+  PRODUCTS.forEach((product) => {
+    let discountElement = product.querySelector(".discounted");
+    let priceElement = product.querySelector(".product-price");
+    let finalPriceElement = product.querySelector(".final-price");
+
+    if (discountElement && priceElement && finalPriceElement){
+      let discount = parseFloat(discountElement.textContent);
+      let initialPrice = parseFloat(
+        priceElement.textContent.replace(/[^\d.-]/g, ""));
+      
+      if (!isNaN(discount) && !isNaN(initialPrice)) {
+        let discountValue = (initialPrice * discount) / 100;
+        let finalPrice = initialPrice - discountValue
+        const formattedFinalPrice = new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'GBP'
+        }).format(finalPrice);
+        finalPriceElement.textContent = formattedFinalPrice
+      } 
+      else {
+        finalPriceElement.textContent = "Error calculating price";
+      }
+    }
+      
+
+  })
+  
 }
