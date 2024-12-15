@@ -99,8 +99,6 @@ def get_featured_products():
     return featured_products
     
 
-
-
 @app.route('/search')
 def search():
     query = request.args.get('query', '').lower()
@@ -111,6 +109,7 @@ def search():
     excluded_collections = ['users']
 
     results = []
+    seen_ids = set()  # To track unique document IDs
     for collection_name in mongo.db.list_collection_names():
         if collection_name in excluded_collections:
             continue  
@@ -122,8 +121,10 @@ def search():
             if isinstance(collection.find_one()[key], str):
                 matches = collection.find({key: {"$regex": query, "$options": "i"}})
                 for match in matches:
-                    match['_collection'] = collection_name  # Add collection name for reference
-                    results.append(match)
+                    if match['_id'] not in seen_ids:
+                        match['_collection'] = collection_name 
+                        results.append(match)
+                        seen_ids.add(match['_id'])
 
     return render_template('search-results.html', results=results, query=query)
 

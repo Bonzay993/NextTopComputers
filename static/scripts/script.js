@@ -290,9 +290,7 @@ function calculateDiscount(){
       
 
   })
-  
 }
-
 
 function initializeSpinner(){
     let spinnerWrapperEl = document.querySelector(".spinner-wrapper");
@@ -304,5 +302,4 @@ function initializeSpinner(){
       },200)
     });
      
-    
 }

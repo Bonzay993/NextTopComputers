@@ -296,8 +296,6 @@ main{
     font-size: 95%;
 }
 
-
-
 /* Product Section */
 .product-price {
     font-size: 150%;
@@ -305,10 +303,12 @@ main{
 
 .featured-product-price {
     font-size: 120%;
+    font-weight:300
 }
 
 .featured-final-price{
     font-size: 150%;
+    font-weight: 500;
 }
 
 
