@@ -34,6 +34,24 @@ body{
     transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade-in and fade-out */
 }
  
+.spinner-wrapper{
+    background-color: rgb(148, 145, 155, 0.3);
+    position:fixed;
+    top: 0;
+    left:0;
+    z-index:9999;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    transition: all 0.2s ;
+}
+
+.spinner-border{
+    height:80px;
+    width:80px
+}
 
 footer {
     bottom: 0;

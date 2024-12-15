@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   matchPasswords();
   navbarItemsHover();
   calculateDiscount();
+  initializeSpinner()
 });
 
 
@@ -262,7 +263,6 @@ function navbarItemsHover() {
 
 function calculateDiscount(){
   const PRODUCTS = document.querySelectorAll(".product-card");
-  
 
   PRODUCTS.forEach((product) => {
     let discountElement = product.querySelector(".discounted");
@@ -291,4 +291,18 @@ function calculateDiscount(){
 
   })
   
+}
+
+
+function initializeSpinner(){
+    let spinnerWrapperEl = document.querySelector(".spinner-wrapper");
+    window.addEventListener('load', () => {
+      spinnerWrapperEl.style.opacity = '0';
+
+      setTimeout(() => {
+        spinnerWrapperEl.style.display='none';
+      },200)
+    });
+     
+    
 }
