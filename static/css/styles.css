@@ -11,6 +11,10 @@ html, body{
     text-rendering: optimizeLegibility;
 }
 
+.not-selectable{
+    user-select: none;
+}
+
 body{
     min-height:100%;
 }
@@ -348,6 +352,7 @@ main{
 .add-to-cart-btn{
     align-self: center;
 }
+
 
 .product-image {
     max-width:220px;
