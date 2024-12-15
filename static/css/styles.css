@@ -16,7 +16,7 @@ body{
 }
 
 /* Overlay style */
-.overlay {
+.overlay, .overlay-for-main {
     position: fixed;
     top: 0;
     left: 0;
@@ -319,8 +319,9 @@ main{
     text-align: center;
     display: flex;
     justify-content: center;
-    padding: 1.5rem; /* Adds padding for structure */
+    padding: 1rem; /* Adds padding for structure */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional for shadow */
+    
 }
 
 .product-image {
@@ -364,8 +365,14 @@ main{
     border-radius: 20px;
     padding: 3%;
     border-color:#4822a8 !important;
-    
-    
+}
+
+.btn-custom{
+    background-color: #4822a8;
+}
+
+.btn-custom:hover{
+    background-color: #7255b9  !important;
 }
 
 .sign-in-btn {
@@ -449,6 +456,7 @@ main{
 
 .hero-section h1 {
     font-size: 2.5rem;
+    font-weight: 700;
 }
 
 .product-card{

@@ -183,10 +183,20 @@ def register():
 
 
 
-@app.route("/get_desktops")
+@app.route("/computing/desktops")
 def get_desktops():
     desktops = mongo.db.desktops.find()
     return render_template("desktops.html", desktops=desktops)
+
+@app.route("/computing/laptops")
+def get_laptops():
+    laptops = mongo.db.laptops.find()
+    return render_template("laptops.html", laptops=laptops)
+
+@app.route("/computing/peripherals")
+def get_peripherals():
+   peripherals = mongo.db.peripherals.find()
+   return render_template("peripherals.html", peripherals=peripherals)
 
 
 if __name__ == "__main__":

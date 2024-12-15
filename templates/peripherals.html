@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="products-section py-5">
+    <div class="products-container container py-5">
+        <div class="row">
+            <!-- Filter Column on the Left -->
+            <div class="col-md-4 order-md-1 mb-4">
+                <h1>Filters</h1>
+                <!-- Add filter options here -->
+            </div>
+
+            
+            <!-- Product Cards Column on the Right -->
+            <div class="col-md-8 order-md-2 product-card-container">
+                <div class="dropdown show dropdown-products">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Sort by: Customer Ratings
+                    </a>
+                  
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href="#" onclick="selectItem(this)">Sort by: Customer Ratings</a>
+                      <a class="dropdown-item" href="#" onclick="selectItem(this)">Sort by: Price - low to high</a>
+                      <a class="dropdown-item" href="#" onclick="selectItem(this)">Sort by: Price - high to low</a>
+                    </div>
+                  </div>
+                <div class="row">
+                    {% for peripheral in peripherals %}
+                    <div class="col-md-12 mb-4">
+                        <div class="card product-card">
+                            <div class="row g-0">
+                                <!-- Image Column on the Left -->
+                                <div class="col-md-4 px-2 py-2">
+                                    <img src="{{ peripheral.IMG_URL }}" class="product-image" alt="{{ peripheral.name }}">
+                                </div>
+                                <!-- Product Name and Description in the Center -->
+                                <div class="col-md-6 d-flex flex-column align-items-start pt-4 px-4">
+                                    <h5 class="card-text text-start">{{ peripheral.name }}</h5>
+                                    <ul class="font-weight-light">
+                                        <li class="text-start mt-2"><span>CPU: </span>{{ peripheral.cpu }}</li>
+                                        <li class="text-start mt-2">{{ peripheral.ram }}</li>
+                                        <li class="text-start mt-2"><span>Display: </span>{{ peripheral.display }}</li>
+                                    </ul>
+                                </div>
+                                <!-- Price and Add to Cart Button on the Right -->
+                                <div class="col-md-2 d-flex flex-column align-items-center pt-3">
+                                    <h3 class="card-text product-price"><span>£</span>{{ peripheral.price }}</h3>
+                                    <div class="product-btn-container">
+                                        <a href="#" class="view-product-btn product-btn">View Product</a>
+                                        <a href="#" class="add-to-cart-btn product-btn">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

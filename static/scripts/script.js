@@ -7,6 +7,9 @@ const repeatPasswordField = document.getElementById("repeat-password");
 const registerForm = document.getElementById('registerForm');
 const RESET_PASSWORD = document.querySelector('.reset-password');
 const forms = [registerForm, RESET_PASSWORD]
+const searchBar = document.querySelector(".nav-search-bar");
+const overlay = document.querySelector(".overlay");
+let isOverlayVisible = false; // Track visibility state of the overlay
 
 
 const passwordInput = document.getElementById('password');
@@ -183,33 +186,8 @@ document.addEventListener('click', (event) => {
 
 
 function initializeSearchBar() {
-  const searchBar = document.querySelector(".nav-search-bar");
-  const overlay = document.querySelector(".overlay");
 
-  let isOverlayVisible = false; // Track visibility state of the overlay
-
-  // Function to show the overlay (fade-in)
-  function showOverlay() {
-      if (!isOverlayVisible) {
-          overlay.style.opacity = "1";  // Fade-in overlay
-          overlay.style.visibility = "visible";  // Ensure overlay is visible
-          overlay.style.pointerEvents = "auto"; // Enable interaction with overlay
-          searchBar.classList.add("search-bar-border");  // Highlight search bar
-          isOverlayVisible = true;
-      }
-  }
-
-  // Function to hide the overlay (fade-out)
-  function hideOverlay() {
-      if (isOverlayVisible) {
-          overlay.style.opacity = "0";  // Fade-out overlay
-          overlay.style.visibility = "hidden";  // Hide overlay completely
-          overlay.style.pointerEvents = "none"; // Disable interaction during fade-out
-          searchBar.classList.remove("search-bar-border");  // Remove highlight
-          isOverlayVisible = false;
-      }
-  }
-
+  
   // Handle clicking on the search bar (show overlay)
   searchBar.addEventListener("click", (event) => {
       event.stopPropagation();  // Prevent document click from firing
@@ -224,24 +202,57 @@ function initializeSearchBar() {
 }
 
 
+// Function to show the overlay (fade-in)
+function showOverlay() {
+  if (!isOverlayVisible) {
+      overlay.style.opacity = "1";  // Fade-in overlay
+      overlay.style.visibility = "visible";  // Ensure overlay is visible
+      overlay.style.pointerEvents = "auto"; // Enable interaction with overlay
+      searchBar.classList.add("search-bar-border");  // Highlight search bar
+      isOverlayVisible = true;
+  }
+}
+
+ // Function to hide the overlay (fade-out)
+ function hideOverlay() {
+  if (isOverlayVisible) {
+      overlay.style.opacity = "0";  // Fade-out overlay
+      overlay.style.visibility = "hidden";  // Hide overlay completely
+      overlay.style.pointerEvents = "none"; // Disable interaction during fade-out
+      searchBar.classList.remove("search-bar-border");  // Remove highlight
+      isOverlayVisible = false;
+  }
+}
+
+
 
 function navbarItemsHover() {
+
+  let overlay=document.querySelector(".overlay-for-main")
+  let overlayForMain = () => {
+    overlay.style.display = 'block';
+  }
+
   document.querySelectorAll('.category-item').forEach(container => {
-    const navCategory = container.querySelector('.nav-category');
-    const dropdown = container.querySelector('.category-dropdown');
+    let navCategory = container.querySelector('.nav-category');
+    let dropdown = container.querySelector('.category-dropdown');
+   
+
 
     // Function to show the dropdown
-    const showDropdown = () => {
+    let showDropdown = () => {
       dropdown.style.display = 'block';
     };
 
     // Function to hide the dropdown
-    const hideDropdown = () => {
+    let hideDropdown = () => {
       dropdown.style.display = 'none';
     };
 
+   
+
     // Attach event listeners
-    navCategory.addEventListener('mouseenter', showDropdown);
+    navCategory.addEventListener('mouseenter', showDropdown, overlayForMain);
     container.addEventListener('mouseleave', hideDropdown);
   });
 }
