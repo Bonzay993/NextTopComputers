@@ -275,8 +275,11 @@ function calculateDiscount(){
         priceElement.textContent.replace(/[^\d.-]/g, ""));
       
       if (!isNaN(discount) && !isNaN(initialPrice)) {
-        let discountValue = (initialPrice * discount) / 100;
+        let discountValue = -((initialPrice * discount) / 100).toFixed(3);
         let finalPrice = initialPrice - discountValue
+        console.log(finalPrice)
+        console.log(discountValue)
+        console.log(initialPrice)
         const formattedFinalPrice = new Intl.NumberFormat('en-US', {
           style: 'currency',
           currency: 'GBP'
