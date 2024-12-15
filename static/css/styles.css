@@ -307,6 +307,13 @@ main{
     font-size: 13px;
 }
 
+.breadcrumbs-symbol{
+    opacity:0.5;
+    font-size:16px;
+    text-decoration: none;
+    color: #213038;
+}
+
 .breadcrumbs-anchor-last-el{
     color: #213038;
 }
