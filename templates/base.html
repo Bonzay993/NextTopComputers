@@ -21,115 +21,121 @@
   </div>
   <div id="overlay" class="overlay" aria-hidden="true"></div>
      <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg container-fluid bg-light not-selectable">
-    <div class="container navbar-container container-fluid d-flex flex-wrap">
-      <!-- Brand Name -->
-      
-      <div class="d-flex flex-row col-md-2 col-xxl-2 col-xl-2 col-lg-2 col-sm-2 navbar-brand-container">
-         <a class="navbar-brand " href="{{ url_for('get_base') }}">
-          <img src="../static/img/ntp-logo-violet.png" class="navbar-brand-img" alt="Logo">
-         </a>
-      </div>
-
-      <div class="row col-xxl-8 col-xl-7 col-lg-7 col-md-5 col-sm-12 nav-search-container ">
+     <nav class="navbar navbar-expand-lg container-fluid bg-light not-selectable">
+      <div class="container navbar-container container-fluid d-flex flex-wrap">
+          <!-- Brand Name -->
+          <div class="d-flex flex-row col-md-2 col-xxl-2 col-xl-2 col-lg-2 col-sm-2 navbar-brand-container">
+              <a class="navbar-brand" href="{{ url_for('get_base') }}">
+                  <img src="../static/img/ntp-logo-violet.png" class="navbar-brand-img" alt="Logo">
+              </a>
+          </div>
+  
           <!-- Centered Search Bar -->
-          <div class="row">
-              <div class="search-bar-focus">
-                  <form class="nav-search-bar col-xxl-8 col-xl-8 col-lg-10 col-md-12 d-flex flex-row flex-sm-row align-items-center" action="{{ url_for('search') }}" method="get">
-                      <input class="border-0 form-control search-bar-input" type="search" name="query" placeholder="Search products" aria-label="Search" autocomplete="off">
-                      <button class="btn nav-search-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                  </form>
+          <div class="row col-xxl-8 col-xl-7 col-lg-7 col-md-5 col-sm-12 nav-search-container">
+              <div class="row">
+                  <div class="search-bar-focus">
+                      <form class="nav-search-bar col-xxl-8 col-xl-8 col-lg-10 col-md-12 d-flex flex-row flex-sm-row align-items-center"
+                            action="{{ url_for('search') }}" method="get">
+                          <input class="border-0 form-control search-bar-input" type="search" name="query"
+                                 placeholder="Search products" aria-label="Search" autocomplete="off">
+                          <button class="btn nav-search-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                      </form>
+                  </div>
+              </div>
+              <!-- Categories Section Under ShopName, Left-Aligned -->
+              <div class="category-container">
+                  <div class="container category-links">
+                      <div class="category-item">
+                          <a class="nav-link nav-category" href="{{ url_for('get_desktops') }}">Computing</a>
+                          <div class="category-dropdown">
+                              <a href="{{url_for('get_laptops')}}">Laptops</a>
+                              <a href="{{url_for('get_desktops')}}">Desktops</a>
+                              <a href="#">Computer Monitors</a>
+                          </div>
+                      </div>
+                      <div class="category-item">
+                          <a class="nav-link nav-category" href="#">Gaming</a>
+                          <div class="category-dropdown">
+                              <a href="#">PS5 Consoles</a>
+                              <a href="">Xbox Consoles</a>
+                              <a href="#">Games</a>
+                              <a href="#">Controllers</a>
+                          </div>
+                      </div>
+                      <div class="category-item">
+                          <a class="nav-link nav-category" href="#">Components</a>
+                          <div class="category-dropdown">
+                              <a href="#">Processors</a>
+                              <a href="#">Graphics Cards</a>
+                              <a href="#">Computer Memory - RAM</a>
+                              <a href="">Storage</a>
+                          </div>
+                      </div>
+                      <div class="category-item">
+                          <a class="nav-link nav-category" href="{{url_for('get_peripherals')}}">Peripherals</a>
+                          <div class="category-dropdown">
+                              <a href="#">Keyboard</a>
+                              <a href="#">Mice</a>
+                              <a href="#">PC Speakers</a>
+                          </div>
+                      </div>
+                      <div class="category-item">
+                          <a class="nav-link nav-category" href="#">Top Deals</a>
+                          <div class="category-dropdown">
+                              <a href="#">Today's Deals</a>
+                              <a href="#">Weekly Deals</a>
+                              <a href="#">Clearance</a>
+                          </div>
+                      </div>
+                  </div>
               </div>
           </div>
-          <!-- Categories Section Under ShopName, Left-Aligned -->
-          <div class="category-container ">
-            <div class="container category-links">
-              <div class="category-item">
-                <a class="nav-link nav-category" href="{{ url_for('get_desktops') }}">Computing</a>
-                <div class="category-dropdown">
-                  <a href="{{url_for('get_laptops')}}">Laptops</a>
-                  <a href="{{url_for('get_desktops')}}">Desktops</a>
-                  <a href="#">Computer Monitors</a>
-                </div>
-              </div>
-              <div class="category-item">
-                <a class="nav-link nav-category" href="#">Gaming</a>
-                <div class="category-dropdown">
-                  <a href="#">PS5 Consoles</a>
-                  <a href="">Xbox Consoles</a>
-                  <a href="#">Games</a>
-                  <a href="#">Controllers</a>
-                </div>
-              </div>
-              <div class="category-item">
-                <a class="nav-link nav-category" href="#">Components</a>
-                <div class="category-dropdown">
-                  <a href="#">Processors</a>
-                  <a href="#">Graphics Cards</a>
-                  <a href="#">Computer Memory - RAM</a>
-                  <a href="">Storage</a>
-                </div>
-              </div>
-              <div class="category-item">
-                <a class="nav-link nav-category" href="{{url_for('get_peripherals')}}">Peripherals</a>
-                <div class="category-dropdown">
-                  <a href="#">Keyboard</a>
-                  <a href="#">Mice</a>
-                  <a href="#">PC Speakers</a>
-                </div>
-              </div>
-              <div class="category-item">
-                <a class="nav-link nav-category" href="#">Top Deals</a>
-                <div class="category-dropdown">
-                  <a href="#">Today's Deals</a>
-                  <a href="#">Weekly Deals</a>
-                  <a href="#">Clearance</a>
-                </div>
-              </div>
-            </div>
+  
+          <!-- Navbar right items -->
+          <div class="navbar-right-items col-xxl-2 col-xl-3 col-lg-3 col-md-3 col-sm-5 flex-row d-flex">
+              <a class="nav-link right-link" href="{{ url_for('get_base') }}">
+                  <i class="fa-solid fa-house"></i>
+                  <span>Home</span>
+              </a>
+              <a class="nav-link right-link" href="#">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span>Contact</span>
+              </a>
+              <a class="nav-link right-link" href="{{ url_for('sign_in') }}">
+                  <i class="fa-solid fa-user"></i>
+                  <span>Sign In</span>
+              </a>
+              <a class="nav-link right-link" href="#">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span>Cart</span>
+              </a>
           </div>
-       </div>
-       <!--Navbar right items-->
-       <div class="navbar-right-items col-xxl-2 col-xl-3 col-lg-3 col-md-3 col-sm-5 flex-row d-flex ">
-        
-          <a class="nav-link right-link" href="{{ url_for('get_base') }}">
-              <i class="fa-solid fa-house"></i>
-              <span>Home</span>
-          </a>
-          <a class="nav-link right-link" href="#">
-              <i class="fa-solid fa-location-dot"></i>
-              <span>Contact</span>
-          </a>
-          <a class="nav-link right-link" href="{{ url_for('sign_in') }}">
-              <i class="fa-solid fa-user"></i>
-              <span>Sign In</span>
-          </a>
-          <a class="nav-link right-link" href="#">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span>Cart</span>
-          </a>
-         
-        </div>
-
-        <!-- Toggle Button for Mobile -->
-        <div class="col-sm-2 col-md-1 toggle-container">
-          <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-      
-      
-        <!-- Navbar Links -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="container navbar-toggler-links">
-            <a>test</a>
-            <a>test2</a>
+  
+          <!-- Toggle Button for Mobile -->
+          <div class="col-sm-2 col-md-1 toggle-container">
+              <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                      aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
           </div>
-        
+  
+          <!-- Offcanvas Menu -->
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                  <!-- Navbar Links -->
+                  <div class="container navbar-toggler-links">
+                      <a href="#">Test</a>
+                      <a href="#">Test2</a>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
   </nav>
-
+  
 
   
   
