@@ -31,10 +31,6 @@ window.onload = function() {
 };
 
 
-  
-
-
-
 // This checks for Passwords to match in the registration form
 document.addEventListener("DOMContentLoaded", () => {
   initializeSearchBar();
